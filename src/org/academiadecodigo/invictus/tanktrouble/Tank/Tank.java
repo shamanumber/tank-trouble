@@ -1,4 +1,8 @@
-package org.academiadecodigo.invictus.tanktrouble;
+package org.academiadecodigo.invictus.tanktrouble.Tank;
+
+import org.academiadecodigo.invictus.tanktrouble.Direction;
+import org.academiadecodigo.invictus.tanktrouble.Field;
+import org.academiadecodigo.invictus.tanktrouble.FieldPosition;
 
 public class Tank {
 

@@ -1,5 +1,6 @@
-package org.academiadecodigo.invictus.tanktrouble;
+package org.academiadecodigo.invictus.tanktrouble.Tank;
 
+import org.academiadecodigo.invictus.tanktrouble.Direction;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
