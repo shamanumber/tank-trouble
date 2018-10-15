@@ -5,7 +5,7 @@ public class Tank {
     private FieldPosition pos;
     private final int speed = 1;
     private Field field;
-    private FieldPosition direction;
+    private Direction direction;
 
 
     public Tank(FieldPosition pos) {
@@ -29,13 +29,13 @@ public class Tank {
 
 
 
-    public void accelerate(FieldPosition direction){
+    public void accelerate(Direction direction){
 
     }
 
-
-
-
+    public void setDirection(Direction direction) {
+        this.direction = direction;
+    }
 
     public void move(){
 

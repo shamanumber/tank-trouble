@@ -43,8 +43,23 @@ public class Tank1Movement implements KeyboardHandler {
     }
 
     @Override
-    public void keyPressed(KeyboardEvent keyboardEvent) {
+    public void keyPressed(KeyboardEvent keypressed) {
 
+        if(keypressed.getKey() == KeyboardEvent.KEY_UP){
+            tank.setDirection((Direction.UP));
+        }
+
+        if(keypressed.getKey() == KeyboardEvent.KEY_DOWN){
+            tank.setDirection((Direction.DOWN));
+        }
+
+        if(keypressed.getKey() == KeyboardEvent.KEY_LEFT){
+            tank.setDirection((Direction.LEFT));
+        }
+
+        if(keypressed.getKey() == KeyboardEvent.KEY_RIGHT){
+            tank.setDirection((Direction.RIGHT));
+        }
     }
 
     @Override
