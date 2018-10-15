@@ -1,4 +1,4 @@
-package org.academiadecodigo.invictus.tanktrouble;
+package org.academiadecodigo.invictus.tanktrouble.Field;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
