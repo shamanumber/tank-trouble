@@ -1,34 +1,34 @@
 package org.academiadecodigo.invictus.tanktrouble.Tank;
 
 import org.academiadecodigo.invictus.tanktrouble.Direction;
-import org.academiadecodigo.invictus.tanktrouble.Field.Field;
-import org.academiadecodigo.invictus.tanktrouble.Field.FieldPosition;
+import org.academiadecodigo.invictus.tanktrouble.Field.GridPosition;
+import org.academiadecodigo.invictus.tanktrouble.Field.SimpleGfxGrid;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Tank {
-    private FieldPosition pos;
+    private GridPosition pos;
     private final int speed = 1;
-    private Field field;
+    private SimpleGfxGrid field;
     private Direction direction;
     private  Picture tank;
 
-    public Tank(FieldPosition pos, String path) {
+    public Tank(GridPosition pos, String path) {
 
         this.pos = pos;
-        tank = new Picture(10,10,path);
+        tank = new Picture(pos.getCol()*10,pos.getRow()*10.,path);
         tank.draw();
     }
 
 
 
-    public FieldPosition getPos() {
+    public GridPosition getPos() {
 
         return pos;
     }
 
 
 
-    public void setField(Field field) {
+    public void setField(SimpleGfxGrid field) {
 
         this.field = field;
     }
@@ -45,11 +45,20 @@ public class Tank {
 
     public void move(){
 
-        if (direction == null){
+       switch (direction){
+           case RIGHT:
+               tank.translate(50,0);
+               break;
+           case UP:
+               tank.translate(0,-50);
+               break;
+           case DOWN:
+               tank.translate(0,50);
+               break;
+           case LEFT:
+               tank.translate(-50,0);
+               break;
 
-            return;
-        }
-
-        accelerate(direction);
+       }
     }
 }

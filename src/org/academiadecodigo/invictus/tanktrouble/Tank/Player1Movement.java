@@ -48,18 +48,23 @@ public class Player1Movement implements KeyboardHandler {
 
         if(e.getKey() == KeyboardEvent.KEY_UP){
             tank.setDirection((Direction.UP));
+            tank.move();
         }
 
         if(e.getKey() == KeyboardEvent.KEY_DOWN){
             tank.setDirection((Direction.DOWN));
+            tank.move();
         }
 
         if(e.getKey() == KeyboardEvent.KEY_LEFT){
             tank.setDirection((Direction.LEFT));
+            tank.move();
         }
 
         if(e.getKey() == KeyboardEvent.KEY_RIGHT){
             tank.setDirection((Direction.RIGHT));
+            tank.move();
+
         }
     }
 

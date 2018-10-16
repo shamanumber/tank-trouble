@@ -1,13 +1,13 @@
-package org.academiadecodigo.invictus.tanktrouble.simplegfx;
+package org.academiadecodigo.invictus.tanktrouble.Field;
 
-import org.academiadecodigo.invictus.tanktrouble.Grid;
+
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
-public class SimpleGfxGrid implements Grid {
+public class SimpleGfxGrid  {
 
     public static final int PADDING = 10;
 
-    private int cellSize = 15;
+    private int cellSize = 10;
     private int cols;
     private int rows;
 
@@ -22,7 +22,6 @@ public class SimpleGfxGrid implements Grid {
 
 // Initializes the field simple graphics rectangle and draws it
 
-    @Override
     public void init() {
         this.field = new Rectangle(PADDING, PADDING, cols * cellSize, rows * cellSize);
         this.field.draw();
@@ -36,12 +35,10 @@ public class SimpleGfxGrid implements Grid {
         return cellSize;
     }
 
-    @Override
     public int getCols() {
         return this.cols;
     }
 
-    @Override
     public int getRows() {
         return this.rows;
     }
@@ -64,9 +61,8 @@ public class SimpleGfxGrid implements Grid {
 
 //Grid#makeGridPosition()
 
-    @Override
     public GridPosition makeGridPosition(int col, int row) {
-        return new SimpleGfxGridPosition(col, row, this);
+        return new GridPosition(col, row, this);
     }
 
 // Auxiliary method to compute the y value that corresponds to a specific row
