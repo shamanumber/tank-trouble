@@ -13,7 +13,7 @@ public interface Grid {
     //gets the number of rows in the grid
     public int getRows();
 
-    //create a grid position in a specific column and row
+    //create a grid position in a specific column and row SEE METHOD
     public GridPosition (int col, int row);
 
 
