@@ -1,6 +1,6 @@
 package org.academiadecodigo.invictus.tanktrouble;
 
-public enum Directions {
+public enum Direction {
     UP,
     DOWN,
     LEFT,
