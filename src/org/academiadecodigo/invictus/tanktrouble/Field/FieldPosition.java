@@ -2,6 +2,7 @@ package org.academiadecodigo.invictus.tanktrouble.Field;
 
 import org.academiadecodigo.invictus.tanktrouble.Direction;
 import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class FieldPosition {
@@ -19,6 +20,7 @@ public class FieldPosition {
         this.field = field;
         tankPicture = new Picture(col, row, "resources/cool-minecraft-background-piq-scorpion-tank-100x100-pixel-art-by-kamilo713-minecraft-background.png");
         tankPicture.draw();
+
     }
 
 
