@@ -2,7 +2,6 @@ package org.academiadecodigo.invictus.tanktrouble.Field;
 
 import org.academiadecodigo.invictus.tanktrouble.Direction;
 import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class FieldPosition {
@@ -64,5 +63,6 @@ public class FieldPosition {
 
 
     }
+
 
 }
