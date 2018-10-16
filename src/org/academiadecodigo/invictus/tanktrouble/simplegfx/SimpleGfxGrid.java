@@ -27,7 +27,7 @@ public class SimpleGfxGrid implements Grid {
         this.field = new Rectangle(PADDING, PADDING, cols * cellSize, rows * cellSize);
         this.field.draw();
     }
-    
+
 
 
 
