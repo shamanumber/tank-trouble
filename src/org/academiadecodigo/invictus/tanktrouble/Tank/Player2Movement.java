@@ -6,59 +6,59 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
-public class Tank1Movement implements KeyboardHandler {
+public class Player2Movement implements KeyboardHandler {
 
     private Tank tank;
 
 
-    public Tank1Movement(Tank tank){
+    public Player2Movement(Tank tank){
         this.tank = tank;
     }
 
     public void movement(){
 
-        Keyboard keyboard = new Keyboard(this);
+        Keyboard keyboard2 = new Keyboard(this);
 
         KeyboardEvent MovingUp = new KeyboardEvent();
-        MovingUp.setKey(KeyboardEvent.KEY_UP);
+        MovingUp.setKey(KeyboardEvent.KEY_W);
         MovingUp.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        keyboard.addEventListener(MovingUp);
+        keyboard2.addEventListener(MovingUp);
 
 
         KeyboardEvent MovingDown = new KeyboardEvent();
-        MovingDown.setKey(KeyboardEvent.KEY_DOWN);
+        MovingDown.setKey(KeyboardEvent.KEY_S);
         MovingDown.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        keyboard.addEventListener(MovingDown);
+        keyboard2.addEventListener(MovingDown);
 
 
         KeyboardEvent MovingLeft = new KeyboardEvent();
-        MovingLeft.setKey(KeyboardEvent.KEY_LEFT);
+        MovingLeft.setKey(KeyboardEvent.KEY_A);
         MovingLeft.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        keyboard.addEventListener(MovingLeft);
+        keyboard2.addEventListener(MovingLeft);
 
 
         KeyboardEvent MovingRight = new KeyboardEvent();
-        MovingRight.setKey(KeyboardEvent.KEY_RIGHT);
+        MovingRight.setKey(KeyboardEvent.KEY_D);
         MovingRight.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        keyboard.addEventListener(MovingRight);
+        keyboard2.addEventListener(MovingRight);
     }
 
     @Override
     public void keyPressed(KeyboardEvent keypressed) {
 
-        if(keypressed.getKey() == KeyboardEvent.KEY_UP){
+        if(keypressed.getKey() == KeyboardEvent.KEY_W){
             tank.setDirection((Direction.UP));
         }
 
-        if(keypressed.getKey() == KeyboardEvent.KEY_DOWN){
+        if(keypressed.getKey() == KeyboardEvent.KEY_S){
             tank.setDirection((Direction.DOWN));
         }
 
-        if(keypressed.getKey() == KeyboardEvent.KEY_LEFT){
+        if(keypressed.getKey() == KeyboardEvent.KEY_A){
             tank.setDirection((Direction.LEFT));
         }
 
-        if(keypressed.getKey() == KeyboardEvent.KEY_RIGHT){
+        if(keypressed.getKey() == KeyboardEvent.KEY_D){
             tank.setDirection((Direction.RIGHT));
         }
     }
