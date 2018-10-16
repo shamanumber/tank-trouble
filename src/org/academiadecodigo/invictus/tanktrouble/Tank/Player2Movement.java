@@ -44,21 +44,21 @@ public class Player2Movement implements KeyboardHandler {
     }
 
     @Override
-    public void keyPressed(KeyboardEvent keypressed) {
+    public void keyPressed(KeyboardEvent e) {
 
-        if(keypressed.getKey() == KeyboardEvent.KEY_W){
+        if(e.getKey() == KeyboardEvent.KEY_W){
             tank.setDirection((Direction.UP));
         }
 
-        if(keypressed.getKey() == KeyboardEvent.KEY_S){
+        if(e.getKey() == KeyboardEvent.KEY_S){
             tank.setDirection((Direction.DOWN));
         }
 
-        if(keypressed.getKey() == KeyboardEvent.KEY_A){
+        if(e.getKey() == KeyboardEvent.KEY_A){
             tank.setDirection((Direction.LEFT));
         }
 
-        if(keypressed.getKey() == KeyboardEvent.KEY_D){
+        if(e.getKey() == KeyboardEvent.KEY_D){
             tank.setDirection((Direction.RIGHT));
         }
     }

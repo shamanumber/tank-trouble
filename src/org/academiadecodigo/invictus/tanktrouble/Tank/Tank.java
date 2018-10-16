@@ -3,6 +3,7 @@ package org.academiadecodigo.invictus.tanktrouble.Tank;
 import org.academiadecodigo.invictus.tanktrouble.Direction;
 import org.academiadecodigo.invictus.tanktrouble.Field.Field;
 import org.academiadecodigo.invictus.tanktrouble.Field.FieldPosition;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Tank {
 
@@ -10,11 +11,13 @@ public class Tank {
     private final int speed = 1;
     private Field field;
     private Direction direction;
+    private  Picture tank;
 
-
-    public Tank(FieldPosition pos) {
+    public Tank(FieldPosition pos, String path) {
 
         this.pos = pos;
+        tank = new Picture(10,10,path);
+        tank.draw();
     }
 
 
