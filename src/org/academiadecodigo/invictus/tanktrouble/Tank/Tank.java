@@ -12,10 +12,11 @@ public class Tank {
     private Direction direction=Direction.STOPPED;
     private  Picture tank;
 
-    public Tank(GridPosition pos, String path) {
+    public Tank(GridPosition pos, String path, int[] KEY_CODES) {
 
         this.pos = pos;
         tank = new Picture(pos.getCol()*10,pos.getRow()*10.,path);
+        TankMovement tankMovement=new TankMovement(this,KEY_CODES);
         tank.draw();
     }
 
