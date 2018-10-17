@@ -9,7 +9,7 @@ public class Tank {
     private GridPosition pos;
     private final int speed = 1;
     private SimpleGfxGrid field;
-    private Direction direction;
+    private Direction direction=Direction.STOPPED;
     private  Picture tank;
 
     public Tank(GridPosition pos, String path) {
@@ -47,18 +47,19 @@ public class Tank {
 
        switch (direction){
            case RIGHT:
-               tank.translate(50,0);
+               tank.translate(2,0);
                break;
            case UP:
-               tank.translate(0,-50);
+               tank.translate(0,-2);
                break;
            case DOWN:
-               tank.translate(0,50);
+               tank.translate(0,2);
                break;
            case LEFT:
-               tank.translate(-50,0);
+               tank.translate(-2,0);
                break;
-
+           case STOPPED:
+               break;
        }
     }
 }

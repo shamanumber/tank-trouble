@@ -12,12 +12,11 @@ public class Main {
 
         grid.init();
 
-        Player1Tank player1 = new Player1Tank(grid.makeGridPosition(10 , 10));
-        player1.setField(grid);
-
-        Player2Tank player2 = new Player2Tank(grid.makeGridPosition(20 , 20));
-        player2.setField(grid);
-
-
+        Game g = new Game(grid);
+        try{
+            g.start();
+        }catch (InterruptedException ex){
+            System.out.println("Deu merda");
+        }
     }
 }

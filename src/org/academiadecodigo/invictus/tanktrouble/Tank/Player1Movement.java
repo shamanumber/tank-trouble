@@ -13,10 +13,6 @@ public class Player1Movement implements KeyboardHandler {
 
     public Player1Movement(Tank tank){
         this.tank = tank;
-    }
-
-    public void movement(){
-
         Keyboard keyboard = new Keyboard(this);
 
         KeyboardEvent MovingUp = new KeyboardEvent();
@@ -41,6 +37,10 @@ public class Player1Movement implements KeyboardHandler {
         MovingRight.setKey(KeyboardEvent.KEY_RIGHT);
         MovingRight.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener(MovingRight);
+
+        KeyboardEvent StopMoving = new KeyboardEvent();
+        StopMoving.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        keyboard.addEventListener(StopMoving);
     }
 
     @Override
@@ -48,28 +48,24 @@ public class Player1Movement implements KeyboardHandler {
 
         if(e.getKey() == KeyboardEvent.KEY_UP){
             tank.setDirection((Direction.UP));
-            tank.move();
         }
 
         if(e.getKey() == KeyboardEvent.KEY_DOWN){
             tank.setDirection((Direction.DOWN));
-            tank.move();
         }
 
         if(e.getKey() == KeyboardEvent.KEY_LEFT){
             tank.setDirection((Direction.LEFT));
-            tank.move();
         }
 
         if(e.getKey() == KeyboardEvent.KEY_RIGHT){
             tank.setDirection((Direction.RIGHT));
-            tank.move();
 
         }
     }
 
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
-
+        tank.setDirection(Direction.STOPPED);
     }
 }

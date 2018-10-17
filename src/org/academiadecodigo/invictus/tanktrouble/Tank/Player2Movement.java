@@ -13,9 +13,6 @@ public class Player2Movement implements KeyboardHandler {
 
     public Player2Movement(Tank tank){
         this.tank = tank;
-    }
-
-    public void movement(){
 
         Keyboard keyboard2 = new Keyboard(this);
 
@@ -41,6 +38,26 @@ public class Player2Movement implements KeyboardHandler {
         MovingRight.setKey(KeyboardEvent.KEY_D);
         MovingRight.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         keyboard2.addEventListener(MovingRight);
+
+        KeyboardEvent StopMovingLeft = new KeyboardEvent();
+        StopMovingLeft.setKey(KeyboardEvent.KEY_A);
+        StopMovingLeft.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        keyboard2.addEventListener(StopMovingLeft);
+
+        KeyboardEvent StopMovingUp = new KeyboardEvent();
+        StopMovingUp.setKey(KeyboardEvent.KEY_W);
+        StopMovingUp.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        keyboard2.addEventListener(StopMovingUp);
+
+        KeyboardEvent StopMovingRight = new KeyboardEvent();
+        StopMovingRight.setKey(KeyboardEvent.KEY_D);
+        StopMovingRight.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        keyboard2.addEventListener(StopMovingRight);
+
+        KeyboardEvent StopMovingDown = new KeyboardEvent();
+        StopMovingDown.setKey(KeyboardEvent.KEY_S);
+        StopMovingDown.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+        keyboard2.addEventListener(StopMovingDown);
     }
 
     @Override
@@ -48,27 +65,23 @@ public class Player2Movement implements KeyboardHandler {
 
         if(e.getKey() == KeyboardEvent.KEY_W){
             tank.setDirection((Direction.UP));
-            tank.move();
         }
 
         if(e.getKey() == KeyboardEvent.KEY_S){
             tank.setDirection((Direction.DOWN));
-            tank.move();
         }
 
         if(e.getKey() == KeyboardEvent.KEY_A){
             tank.setDirection((Direction.LEFT));
-            tank.move();
         }
 
         if(e.getKey() == KeyboardEvent.KEY_D){
             tank.setDirection((Direction.RIGHT));
-            tank.move();
         }
     }
 
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
-
+        tank.setDirection(Direction.STOPPED);
     }
 }

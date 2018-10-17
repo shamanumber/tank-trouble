@@ -9,8 +9,7 @@ public class Player1Tank extends Tank {
 
 
     public Player1Tank(GridPosition pos) {
-        super(pos,"/Users/codecadet/Works/GroupProjects/tank-trouble/lib/Resources/Pictures/tank1.png");
+        super(pos,"lib/Resources/Pictures/tank1.png");
         Player1Movement movement = new Player1Movement(this);
-        movement.movement();
     }
 }
