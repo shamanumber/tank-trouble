@@ -22,6 +22,7 @@ public class SimpleGfxGrid implements Grid {
 
 // Initializes the field simple graphics rectangle and draws it
 
+
     @Override
     public void init() {
         this.field = new Rectangle(PADDING, PADDING, cols * cellSize, rows * cellSize);
