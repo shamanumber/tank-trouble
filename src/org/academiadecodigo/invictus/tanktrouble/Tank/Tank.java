@@ -9,11 +9,9 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Tank {
     private GridPosition pos;
-    private final int speed = 1;
     private SimpleGfxGrid field;
     private Direction direction=Direction.STOPPED;
     private  Picture tank;
-    private int initialPos;
 
     public Tank(GridPosition pos, String path, int[] KEY_CODES) {
 
@@ -28,15 +26,6 @@ public class Tank {
 
         return pos;
     }
-
-
-
-    public void setField(SimpleGfxGrid field) {
-
-        this.field = field;
-    }
-
-
 
     public void setDirection(Direction direction) {
         this.direction = direction;
