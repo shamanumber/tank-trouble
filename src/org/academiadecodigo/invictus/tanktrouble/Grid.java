@@ -14,7 +14,7 @@ public interface Grid {
     public int getRows();
 
     //create a grid position in a specific column and row SEE METHOD
-    public GridPosition makeGridPosition (int col, int row);
+//    public GridPosition makeGridPosition (int col, int row);
 
 
 
