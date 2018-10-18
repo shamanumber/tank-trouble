@@ -7,7 +7,6 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Tank {
     private GridPosition pos;
-    private final int speed = 1;
     private SimpleGfxGrid field;
     private Direction direction;
     private  Picture tank;
@@ -26,18 +25,11 @@ public class Tank {
         return pos;
     }
 
-
-
     public void setField(SimpleGfxGrid field) {
 
         this.field = field;
     }
 
-
-
-    public void accelerate(Direction direction){
-
-    }
 
     public void setDirection(Direction direction) {
         this.direction = direction;
