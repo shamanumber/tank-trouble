@@ -5,8 +5,6 @@ import org.academiadecodigo.invictus.tanktrouble.Field.GridPosition;
 import org.academiadecodigo.invictus.tanktrouble.Field.SimpleGfxGrid;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-import java.awt.geom.AffineTransform;
-import java.awt.image.AffineTransformOp;
 
 
 public class Tank {
@@ -15,6 +13,7 @@ public class Tank {
     private SimpleGfxGrid field;
     private Direction direction=Direction.STOPPED;
     private  Picture tank;
+    private int initialPos;
 
     public Tank(GridPosition pos, String path, int[] KEY_CODES) {
 
@@ -47,7 +46,7 @@ public class Tank {
 
        switch (direction){
            case RIGHT:
-               tank.setRotation(10);
+               tank.setRotation(tank.getRotation()+3);
                break;
            case UP:
                tank.translate(0,-2);
@@ -56,7 +55,7 @@ public class Tank {
                tank.translate(0,2);
                break;
            case LEFT:
-               tank.setRotation(-10);
+               tank.setRotation(tank.getRotation()-3);
                break;
            case STOPPED:
                break;
