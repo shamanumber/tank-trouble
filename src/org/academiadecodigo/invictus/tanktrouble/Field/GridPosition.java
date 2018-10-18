@@ -4,26 +4,24 @@ import org.academiadecodigo.invictus.tanktrouble.Direction;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class FieldPosition {
+public class GridPosition {
 
     private int col;
     private int row;
     private Color color;
-    private Field field;
+    private SimpleGfxGrid field;
     private Picture tankPicture;
 
-    public FieldPosition(int col, int row, Field field) {
+    public GridPosition(int col, int row, SimpleGfxGrid grid) {
 
         this.col = col;
         this.row = row;
-        this.field = field;
-        tankPicture = new Picture(col, row, "resources/cool-minecraft-background-piq-scorpion-tank-100x100-pixel-art-by-kamilo713-minecraft-background.png");
-        tankPicture.draw();
+        this.field = grid;
 
     }
 
 
-    public Field getField() {
+    public SimpleGfxGrid getGrid() {
         return field;
 
     }
@@ -31,7 +29,6 @@ public class FieldPosition {
     public void setPos(int col, int row) {
         this.col = col;
         this.row = row;
-        tankPicture.draw();
     }
 
     public int getCol() {
