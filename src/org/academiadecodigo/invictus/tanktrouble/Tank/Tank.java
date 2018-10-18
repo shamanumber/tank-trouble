@@ -19,7 +19,6 @@ public class Tank {
     }
 
 
-
     public GridPosition getPos() {
 
         return pos;
@@ -39,6 +38,7 @@ public class Tank {
 
        switch (direction){
            case RIGHT:
+               if(getPos().getCol() == SimpleGfxGrid.-1);
                tank.translate(50,0);
                break;
            case UP:
@@ -53,4 +53,9 @@ public class Tank {
 
        }
     }
+
+
+
+
+
 }
