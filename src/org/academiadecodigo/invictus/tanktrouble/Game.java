@@ -19,7 +19,7 @@ public class Game {
         while (true){
             player1.move();
             player2.move();
-            Thread.sleep(20);
+            Thread.sleep(16);
         }
     }
 

@@ -5,7 +5,9 @@ import org.academiadecodigo.invictus.tanktrouble.Field.GridPosition;
 import org.academiadecodigo.invictus.tanktrouble.Field.SimpleGfxGrid;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-import java.awt.*;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
+
 
 public class Tank {
     private GridPosition pos;
@@ -22,8 +24,6 @@ public class Tank {
         tank.draw();
     }
 
-    Graphics2D graphics2D = new Graphics2D() {
-    }
 
     public GridPosition getPos() {
 
@@ -38,9 +38,6 @@ public class Tank {
     }
 
 
-    public void accelerate(Direction direction){
-
-    }
 
     public void setDirection(Direction direction) {
         this.direction = direction;
@@ -50,7 +47,7 @@ public class Tank {
 
        switch (direction){
            case RIGHT:
-               this.rotation(-0.5);
+               tank.setRotation(10);
                break;
            case UP:
                tank.translate(0,-2);
@@ -59,15 +56,10 @@ public class Tank {
                tank.translate(0,2);
                break;
            case LEFT:
-               this.rotation(0.5);
+               tank.setRotation(-10);
                break;
            case STOPPED:
                break;
        }
-    }
-
-    public void rotation(Double angle){
-
-
     }
 }
