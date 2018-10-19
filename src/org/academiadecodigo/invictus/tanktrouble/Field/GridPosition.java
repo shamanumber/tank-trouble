@@ -1,21 +1,18 @@
 package org.academiadecodigo.invictus.tanktrouble.Field;
 
-import org.academiadecodigo.invictus.tanktrouble.Direction;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class GridPosition {
 
-    private int col;
-    private int row;
-    private Color color;
+    private int x;
+    private int y;
     private SimpleGfxGrid field;
-    private Picture tankPicture;
 
-    public GridPosition(int col, int row, SimpleGfxGrid grid) {
+    public GridPosition(int x, int y, SimpleGfxGrid grid) {
 
-        this.col = col;
-        this.row = row;
+        this.x = x;
+        this.y = y;
         this.field = grid;
 
     }
@@ -26,40 +23,20 @@ public class GridPosition {
 
     }
 
-    public void setPos(int col, int row) {
-        this.col = col;
-        this.row = row;
+    public void setPos(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 
-    public int getCol() {
-        return col;
-
+    public int getx() {
+        return x;
     }
 
-    public int getRow() {
-        return row;
+    public int gety() {
+        return y;
     }
-
-    public void moveInDirection(Direction direction, int distance) {
-
-        switch (direction) {
-
-            case UP:
-                setPos(getCol(), getRow() - 1);
-                break;
-            case DOWN:
-                setPos(getCol(), getRow() + 1);
-                break;
-            case LEFT:
-                setPos(getCol() - 1, getRow());
-                break;
-            case RIGHT:
-                setPos(getCol() + 1, getRow());
-                break;
-        }
-
-
-    }
-
 
 }
+
+
+
