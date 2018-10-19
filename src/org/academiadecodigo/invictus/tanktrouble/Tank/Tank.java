@@ -93,4 +93,12 @@ public class Tank {
             numberOfProjectiles++;
         }
     }
+
+    public boolean isUp() {
+        return up;
+    }
+
+    public boolean isDown() {
+        return down;
+    }
 }

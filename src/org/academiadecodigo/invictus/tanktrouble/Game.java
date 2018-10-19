@@ -11,6 +11,7 @@ public class Game {
     private Tank player1;
     private Tank player2;
     private SimpleGfxGrid field;
+    private Collision collisionDetect;
 
 
     public Game(SimpleGfxGrid grid) {
@@ -18,6 +19,7 @@ public class Game {
         this.player1 = new Player1Tank(new FieldPosition(20, 20, grid));
         this.player2 = new Player2Tank(new FieldPosition(40, 40, grid));
         this.field = grid;
+        collisionDetect = new Collision();
     }
 
 
@@ -27,6 +29,8 @@ public class Game {
 
             player1.move();
             player2.move();
+            collisionDetect.checkCollisions(field, player1, player2);
+
             Thread.sleep(16);
         }
     }
