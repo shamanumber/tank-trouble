@@ -9,14 +9,14 @@ public class Projectile {
 
     public Projectile(Tank tank, int angle) {
         this.angle = angle;
-        bullet = new Picture(tank.getX(), tank.getY(), "lib/Resources/Pictures/bullets-game-assets_0.png");
+        bullet = new Picture(tank.getX()+tank.getHeight()/2, tank.getY()+tank.getWidth()/2, "lib/Resources/Pictures/bullets-game-assets_0.png");
         bullet.draw();
         bullet.setRotation(angle);
     }
 
 
     public void move() {
-        bullet.translate(Math.cos(Math.toRadians(angle)), Math.sin(Math.toRadians(angle)));
+        bullet.translate(Math.cos(Math.toRadians(angle))*4, Math.sin(Math.toRadians(angle))*4);
     }
 
 }

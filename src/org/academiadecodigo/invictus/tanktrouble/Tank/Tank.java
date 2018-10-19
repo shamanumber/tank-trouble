@@ -37,6 +37,13 @@ public class Tank {
         return tank.getY();
     }
 
+    public int getHeight(){
+        return tank.getHeight();
+    }
+
+    public int getWidth(){
+        return  tank.getWidth();
+    }
 
     public void move() {
 
