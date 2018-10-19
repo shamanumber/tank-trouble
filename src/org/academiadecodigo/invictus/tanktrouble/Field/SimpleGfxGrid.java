@@ -3,7 +3,7 @@ package org.academiadecodigo.invictus.tanktrouble.Field;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
-public class SimpleGfxGrid  {
+public class SimpleGfxGrid {
 
     public static final int PADDING = 10;
 
@@ -79,4 +79,5 @@ public class SimpleGfxGrid  {
     public int columnToX(int column) {
         return PADDING + cellSize * column;
     }
+
 }
