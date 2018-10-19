@@ -1,17 +1,17 @@
 package org.academiadecodigo.invictus.tanktrouble.Tank;
 
-import org.academiadecodigo.invictus.tanktrouble.Direction;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
-public class TankMovement implements KeyboardHandler {
+public class TankActions implements KeyboardHandler {
 
     private Tank tank;
     private int[] KEY_CODES;
 
-    public TankMovement(Tank tank, int[] KEY_CODES) {
+
+    public TankActions(Tank tank, int[] KEY_CODES) {
         this.tank = tank;
         this.KEY_CODES = KEY_CODES;
         Keyboard keyboard = new Keyboard(this);
@@ -30,25 +30,44 @@ public class TankMovement implements KeyboardHandler {
     public void keyPressed(KeyboardEvent e) {
 
         if (e.getKey() == KEY_CODES[0]) {
-            tank.setDirection((Direction.UP));
+            tank.setUp(true);
         }
 
         if (e.getKey() == KEY_CODES[1]) {
-            tank.setDirection((Direction.DOWN));
+            tank.setDown(true);
         }
 
         if (e.getKey() == KEY_CODES[2]) {
-            tank.setDirection((Direction.LEFT));
+            tank.setLeft(true);
         }
 
         if (e.getKey() == KEY_CODES[3]) {
-            tank.setDirection((Direction.RIGHT));
+            tank.setRight(true);
 
+        }
+
+        if(e.getKey() == KEY_CODES[4]){
+            tank.shoot();
         }
     }
 
+
     @Override
-    public void keyReleased(KeyboardEvent keyboardEvent) {
-        tank.setDirection(Direction.STOPPED);
+    public void keyReleased(KeyboardEvent e) {
+        if (e.getKey() == KEY_CODES[0]) {
+            tank.setUp(false);
+        }
+
+        if (e.getKey() == KEY_CODES[1]) {
+            tank.setDown(false);
+        }
+
+        if (e.getKey() == KEY_CODES[2]) {
+            tank.setLeft(false);
+        }
+
+        if (e.getKey() == KEY_CODES[3]) {
+            tank.setRight(false);
+        }
     }
 }

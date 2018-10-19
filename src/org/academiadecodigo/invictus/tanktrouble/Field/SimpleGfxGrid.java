@@ -3,7 +3,7 @@ package org.academiadecodigo.invictus.tanktrouble.Field;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
-public class SimpleGfxGrid  {
+public class SimpleGfxGrid {
 
     public static final int PADDING = 10;
 
@@ -27,7 +27,7 @@ public class SimpleGfxGrid  {
         this.field.draw();
     }
 
-    public void setCellSize(int cellSize) {
+    public void setCddellSize(int cellSize) {
         this.cellSize = cellSize;
     }
 
@@ -61,8 +61,8 @@ public class SimpleGfxGrid  {
 
 //Grid#makeGridPosition()
 
-    public GridPosition makeGridPosition(int col, int row) {
-        return new GridPosition(col, row, this);
+    public FieldPosition makeGridPosition(int col, int row) {
+        return new FieldPosition(col, row, this);
     }
 
 // Auxiliary method to compute the y value that corresponds to a specific row
