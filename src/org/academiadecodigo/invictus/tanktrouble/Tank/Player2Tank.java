@@ -10,7 +10,7 @@ public class Player2Tank extends Tank {
             KeyboardEvent.KEY_S,//moving down
             KeyboardEvent.KEY_A,//moving left
             KeyboardEvent.KEY_D, //moving right
-            KeyboardEvent.KEY_1
+            KeyboardEvent.KEY_Q
     };
 
     public Player2Tank(FieldPosition pos) {
