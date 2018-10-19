@@ -12,7 +12,7 @@ public class Player2Tank extends Tank {
     };
 
     public Player2Tank(GridPosition pos) {
-        super(pos,"lib/Resources/Pictures/tank2.png",KEY_CODES);
+        super(pos,"/Users/codecadet/Workspace/TankTrouble/tank-trouble/lib/Resources/Pictures/tank2.png",KEY_CODES);
 
     }
 }

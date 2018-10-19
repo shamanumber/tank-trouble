@@ -14,6 +14,6 @@ public class Player1Tank extends Tank {
 
 
     public Player1Tank(GridPosition pos) {
-        super(pos,"lib/Resources/Pictures/tank1.png",KEY_CODES);
+        super(pos, "/Users/codecadet/Workspace/TankTrouble/tank-trouble/lib/Resources/Pictures/tank1.png",KEY_CODES);
     }
 }
