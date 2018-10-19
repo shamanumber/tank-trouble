@@ -4,6 +4,7 @@ import org.academiadecodigo.invictus.tanktrouble.Field.FieldPosition;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 
 public class Player2Tank extends Tank {
+
     private static final int[] KEY_CODES = {
             KeyboardEvent.KEY_W,//moving up
             KeyboardEvent.KEY_S,//moving down
@@ -13,7 +14,7 @@ public class Player2Tank extends Tank {
     };
 
     public Player2Tank(FieldPosition pos) {
-        super(pos, "lib/Resources/Pictures/toy.png", KEY_CODES);
+        super(pos, "lib/Resources/Pictures/tank2.png", KEY_CODES);
 
     }
 }

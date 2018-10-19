@@ -11,7 +11,7 @@ public class Tank {
     private SimpleGfxGrid field;
     private Picture tank;
     private int numberOfProjectiles;
-    private Projectile[] projectiles=new Projectile[3];
+    private Projectile[] projectiles = new Projectile[3];
     private boolean up;
     private boolean down;
     private boolean left;
@@ -31,6 +31,7 @@ public class Tank {
 
         return tank.getX();
     }
+
     public int getY() {
 
         return tank.getY();
@@ -52,7 +53,7 @@ public class Tank {
             tank.translate(Math.cos(Math.toRadians(tank.getRotation())), Math.sin(Math.toRadians(tank.getRotation())));
         }
 
-        for (int i = 0; i<numberOfProjectiles; i++){
+        for (int i = 0; i < numberOfProjectiles; i++) {
             projectiles[i].move();
         }
     }
@@ -81,7 +82,7 @@ public class Tank {
     public void shoot() {
 
         if (numberOfProjectiles < 3) {
-            projectiles[numberOfProjectiles] = new Projectile(this,(int) tank.getRotation());
+            projectiles[numberOfProjectiles] = new Projectile(this, tank.getRotation());
             numberOfProjectiles++;
         }
     }
