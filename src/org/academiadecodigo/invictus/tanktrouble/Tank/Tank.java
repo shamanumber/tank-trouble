@@ -1,52 +1,96 @@
 package org.academiadecodigo.invictus.tanktrouble.Tank;
 
-import org.academiadecodigo.invictus.tanktrouble.Direction;
-import org.academiadecodigo.invictus.tanktrouble.Field.GridPosition;
+import org.academiadecodigo.invictus.tanktrouble.Field.FieldPosition;
 import org.academiadecodigo.invictus.tanktrouble.Field.SimpleGfxGrid;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 
-
 public class Tank {
-    private GridPosition pos;
-    private SimpleGfxGrid field;
-    private Direction direction=Direction.STOPPED;
-    private  Picture tank;
 
-    public Tank(GridPosition pos, String path, int[] KEY_CODES) {
+    private FieldPosition pos;
+    private SimpleGfxGrid field;
+    private Picture tank;
+    private int numberOfProjectiles;
+    private Projectile[] projectiles = new Projectile[3];
+    private boolean up;
+    private boolean down;
+    private boolean left;
+    private boolean right;
+
+
+    public Tank(FieldPosition pos, String path, int[] KEY_CODES) {
 
         this.pos = pos;
-        tank = new Picture(pos.getx(),pos.gety(),path);
-        TankMovement tankMovement=new TankMovement(this,KEY_CODES);
+        tank = new Picture(pos.getX(), pos.getY(), path);
+        new TankActions(this, KEY_CODES);
         tank.draw();
     }
 
 
-    public GridPosition getPos() {
+    public int getX() {
 
-        return pos;
+        return tank.getX();
     }
 
-    public void setDirection(Direction direction) {
-        this.direction = direction;
+    public int getY() {
+
+        return tank.getY();
     }
 
-    public void move(){
-       switch (direction){
-           case RIGHT:
-               tank.setRotation(tank.getRotation()+3);
-               break;
-           case UP:
-               tank.translate(Math.cos(Math.toRadians(tank.getRotation())),Math.sin(Math.toRadians(tank.getRotation())));
-               break;
-           case DOWN:
-               tank.translate(-Math.cos(Math.toRadians(tank.getRotation())),-Math.sin(Math.toRadians(tank.getRotation())));
-               break;
-           case LEFT:
-               tank.setRotation(tank.getRotation()-3);
-               break;
-           case STOPPED:
-               break;
-       }
+    public int getHeight(){
+        return tank.getHeight();
+    }
+
+    public int getWidth(){
+        return  tank.getWidth();
+    }
+
+    public void move() {
+
+        if (right) {
+            tank.setRotation(tank.getRotation() + 3);
+        }
+        if (left) {
+            tank.setRotation(tank.getRotation() - 3);
+        }
+        if (down) {
+            tank.translate(-Math.cos(Math.toRadians(tank.getRotation())), -Math.sin(Math.toRadians(tank.getRotation())));
+        }
+        if (up) {
+            tank.translate(Math.cos(Math.toRadians(tank.getRotation())), Math.sin(Math.toRadians(tank.getRotation())));
+        }
+
+        for (int i = 0; i < numberOfProjectiles; i++) {
+            projectiles[i].move();
+        }
+    }
+
+
+    public void setUp(boolean up) {
+        this.up = up;
+    }
+
+
+    public void setDown(boolean down) {
+        this.down = down;
+    }
+
+
+    public void setLeft(boolean left) {
+        this.left = left;
+    }
+
+
+    public void setRight(boolean right) {
+        this.right = right;
+    }
+
+
+    public void shoot() {
+
+        if (numberOfProjectiles < 3) {
+            projectiles[numberOfProjectiles] = new Projectile(this, tank.getRotation());
+            numberOfProjectiles++;
+        }
     }
 }

@@ -7,7 +7,8 @@ public class Main {
 
         SimpleGfxGrid grid = new SimpleGfxGrid(170,90);
 
-        grid.init();
+        grid.init(1);
+
 
         Game g = new Game(grid);
         try{

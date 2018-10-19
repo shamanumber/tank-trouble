@@ -1,26 +1,23 @@
 package org.academiadecodigo.invictus.tanktrouble.Field;
 
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class GridPosition {
+public class FieldPosition {
 
     private int x;
     private int y;
     private SimpleGfxGrid field;
 
-    public GridPosition(int x, int y, SimpleGfxGrid grid) {
+
+    public FieldPosition(int x, int y, SimpleGfxGrid field) {
 
         this.x = x;
         this.y = y;
-        this.field = grid;
-
+        this.field = field;
     }
 
 
-    public SimpleGfxGrid getGrid() {
+    public SimpleGfxGrid getField() {
         return field;
-
     }
 
     public void setPos(int x, int y) {
@@ -28,11 +25,11 @@ public class GridPosition {
         this.y = y;
     }
 
-    public int getx() {
+    public int getX() {
         return x;
     }
 
-    public int gety() {
+    public int getY() {
         return y;
     }
 
