@@ -7,9 +7,7 @@ public class GridPosition {
 
     private int x;
     private int y;
-    private Color color;
     private SimpleGfxGrid field;
-    private Picture tankPicture;
 
     public GridPosition(int x, int y, SimpleGfxGrid grid) {
 

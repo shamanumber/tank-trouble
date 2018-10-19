@@ -32,7 +32,6 @@ public class Tank {
     }
 
     public void move(){
-
        switch (direction){
            case RIGHT:
                tank.setRotation(tank.getRotation()+3);
