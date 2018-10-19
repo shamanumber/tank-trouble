@@ -11,7 +11,10 @@ public class SimpleGfxGrid  {
     private int cols;
     private int rows;
 
+
+
     private Rectangle field;
+    private Wall wall;
 
 //grid constructor with a certain number of columns and rows
 
@@ -22,9 +25,13 @@ public class SimpleGfxGrid  {
 
 // Initializes the field simple graphics rectangle and draws it
 
-    public void init() {
+    public void init(int maze) {
         this.field = new Rectangle(PADDING, PADDING, cols * cellSize, rows * cellSize);
         this.field.draw();
+        maze(maze);
+
+
+
     }
 
     public void setCellSize(int cellSize) {
@@ -79,4 +86,30 @@ public class SimpleGfxGrid  {
     public int columnToX(int column) {
         return PADDING + cellSize * column;
     }
+
+    public void maze(int maze){
+        if (maze==1){
+
+            Wall wall1 = new Wall (100,200,200,10);
+            Wall wall2 = new Wall (290,200,10,200);
+            Wall wall3 = new Wall (290,400,100,10);
+
+            Wall wall4 = new Wall (450,30,10,200);
+            Wall wall5 = new Wall (460,220,100,10);
+
+            Wall wall6 = new Wall (750,100,10,600);
+            Wall wall7 = new Wall (360,700,400,10);
+
+
+
+
+
+
+
+
+        }
+
+    }
 }
+
+

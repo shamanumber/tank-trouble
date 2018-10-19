@@ -4,13 +4,17 @@ import org.academiadecodigo.invictus.tanktrouble.Field.SimpleGfxGrid;
 import org.academiadecodigo.invictus.tanktrouble.Tank.Player1Movement;
 import org.academiadecodigo.invictus.tanktrouble.Tank.Player1Tank;
 import org.academiadecodigo.invictus.tanktrouble.Tank.Player2Tank;
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Line;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 public class Main {
     public static void main(String[] args) {
 
         SimpleGfxGrid grid = new SimpleGfxGrid(100,100);
 
-        grid.init();
+        grid.init(1);
+
 
         Player1Tank player1 = new Player1Tank(grid.makeGridPosition(10 , 10));
         player1.setField(grid);
