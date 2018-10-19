@@ -3,7 +3,7 @@ package org.academiadecodigo.invictus.tanktrouble.Field;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
-public class SimpleGfxGrid {
+public class SimpleGfxGrid  {
 
     public static final int PADDING = 10;
 
@@ -11,10 +11,7 @@ public class SimpleGfxGrid {
     private int cols;
     private int rows;
 
-
-
     private Rectangle field;
-    private Wall wall;
 
 //grid constructor with a certain number of columns and rows
 
@@ -25,16 +22,17 @@ public class SimpleGfxGrid {
 
 // Initializes the field simple graphics rectangle and draws it
 
-    public void init(int maze) {
+<<<<<<< HEAD:src/org/academiadecodigo/invictus/tanktrouble/simplegfx/SimpleGfxGrid.java
+
+    @Override
+=======
+>>>>>>> master:src/org/academiadecodigo/invictus/tanktrouble/Field/SimpleGfxGrid.java
+    public void init() {
         this.field = new Rectangle(PADDING, PADDING, cols * cellSize, rows * cellSize);
         this.field.draw();
-        maze(maze);
-
-
-
     }
 
-    public void setCddellSize(int cellSize) {
+    public void setCellSize(int cellSize) {
         this.cellSize = cellSize;
     }
 
@@ -68,9 +66,16 @@ public class SimpleGfxGrid {
 
 //Grid#makeGridPosition()
 
-    public FieldPosition makeGridPosition(int col, int row) {
-        return new FieldPosition(col, row, this);
+<<<<<<< HEAD:src/org/academiadecodigo/invictus/tanktrouble/simplegfx/SimpleGfxGrid.java
+    //@Override
+    //public GridPosition makeGridPosition(int col, int row) {
+     //   return new SimpleGfxGridPosition(col, row, this);
+    //}
+=======
+    public GridPosition makeGridPosition(int col, int row) {
+        return new GridPosition(col, row, this);
     }
+>>>>>>> master:src/org/academiadecodigo/invictus/tanktrouble/Field/SimpleGfxGrid.java
 
 // Auxiliary method to compute the y value that corresponds to a specific row
 //     * @param row index
@@ -86,30 +91,4 @@ public class SimpleGfxGrid {
     public int columnToX(int column) {
         return PADDING + cellSize * column;
     }
-
-    public void maze(int maze){
-        if (maze==1){
-            Wall[] walls = new Wall[7];
-            walls[0] = new Wall (100,200,200,10);
-            walls[1] = new Wall (290,200,10,200);
-            walls[2] = new Wall (290,400,100,10);
-
-            walls[3] = new Wall (450,30,10,200);
-            walls[4] = new Wall (460,220,100,10);
-
-            walls[5] = new Wall (750,100,10,600);
-            walls[6] = new Wall (360,700,400,10);
-
-
-
-
-
-
-
-
-        }
-
-    }
 }
-
-

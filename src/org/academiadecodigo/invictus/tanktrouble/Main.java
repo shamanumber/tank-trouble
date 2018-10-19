@@ -5,15 +5,16 @@ import org.academiadecodigo.invictus.tanktrouble.Field.SimpleGfxGrid;
 public class Main {
     public static void main(String[] args) {
 
-        SimpleGfxGrid grid = new SimpleGfxGrid(100,100);
+        SimpleGfxGrid grid = new SimpleGfxGrid(170,90);
 
-        grid.init();
+        grid.init(1);
+
 
         Game g = new Game(grid);
         try{
             g.start();
         }catch (InterruptedException ex){
-            System.out.println("Deu merda");
+            System.out.println("The execution was interrupted");
         }
     }
 }
