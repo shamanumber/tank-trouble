@@ -2,19 +2,17 @@ package org.academiadecodigo.invictus.tanktrouble.GameObjects.Tank;
 
 import org.academiadecodigo.invictus.tanktrouble.Field.FieldPosition;
 import org.academiadecodigo.invictus.tanktrouble.Field.SimpleGfxGrid;
+import org.academiadecodigo.invictus.tanktrouble.Game;
 import org.academiadecodigo.invictus.tanktrouble.GameObjects.GameObject;
+import org.academiadecodigo.invictus.tanktrouble.GameObjects.Projectile;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 
 public class Tank extends GameObject {
 
-    private final int pixels;
-    private FieldPosition pos;
-    private SimpleGfxGrid field;
     private Picture tank;
     private int numberOfProjectiles;
-    private Projectile[] projectiles = new Projectile[3];
     private boolean up;
     private boolean down;
     private boolean canMoveUp;
@@ -22,25 +20,28 @@ public class Tank extends GameObject {
     private boolean left;
     private boolean right;
     private Rectangle hitbox;
+    private Game game;
 
-    public Tank(FieldPosition pos, String path, int[] KEY_CODES) {
+    public Tank(FieldPosition pos, String path, int[] KEY_CODES, Game game) {
         hitbox = new Rectangle(pos.getX(), pos.getY(), 60, 42);
         hitbox.draw();
-        this.pos = pos;
+        this.game = game;
         tank = new Picture(pos.getX(), pos.getY(), path);
         new TankActions(this, KEY_CODES);
         tank.draw();
         canMoveDown = true;
         canMoveUp = true;
-        pixels = tank.pixels();
-        Rectangle rectangle = new Rectangle();
-
     }
 
     @Override
     public int getX() {
 
         return tank.getX();
+    }
+
+    public void resetBullet(){
+        numberOfProjectiles--;
+        System.out.println(numberOfProjectiles);
     }
 
     @Override
@@ -63,8 +64,12 @@ public class Tank extends GameObject {
     }
 
     @Override
-    public int getWidth() {
+    public int getWidth(){
         return tank.getWidth();
+    }
+
+    public void destroyed(){
+        tank.delete();
     }
 
     public void move() {
@@ -77,28 +82,25 @@ public class Tank extends GameObject {
             tank.setRotation(tank.getRotation() - 3);
         }
         if (down && canMoveDown) {
-            tank.translate(-Math.cos(Math.toRadians(tank.getRotation())), -Math.sin(Math.toRadians(tank.getRotation())));
-            hitbox.translate(-Math.cos(Math.toRadians(tank.getRotation())), -Math.sin(Math.toRadians(tank.getRotation())));
+            tank.translate(-Math.cos(Math.toRadians(tank.getRotation()))*2, -Math.sin(Math.toRadians(tank.getRotation()))*2);
+            hitbox.translate(-Math.cos(Math.toRadians(tank.getRotation()))*2, -Math.sin(Math.toRadians(tank.getRotation()))*2);
         }
         if (down && !canMoveDown) {
-            tank.translate(Math.cos(Math.toRadians(tank.getRotation())), Math.sin(Math.toRadians(tank.getRotation())));
-            hitbox.translate(Math.cos(Math.toRadians(tank.getRotation())), Math.sin(Math.toRadians(tank.getRotation())));
+            tank.translate(Math.cos(Math.toRadians(tank.getRotation()))*2, Math.sin(Math.toRadians(tank.getRotation()))*2);
+            hitbox.translate(Math.cos(Math.toRadians(tank.getRotation()))*2, Math.sin(Math.toRadians(tank.getRotation()))*2);
         }
 
         if (up && !canMoveUp) {
-            tank.translate(-Math.cos(Math.toRadians(tank.getRotation())), -Math.sin(Math.toRadians(tank.getRotation())));
-            hitbox.translate(-Math.cos(Math.toRadians(tank.getRotation())), -Math.sin(Math.toRadians(tank.getRotation())));
+            tank.translate(-Math.cos(Math.toRadians(tank.getRotation()))*2, -Math.sin(Math.toRadians(tank.getRotation()))*2);
+            hitbox.translate(-Math.cos(Math.toRadians(tank.getRotation()))*2, -Math.sin(Math.toRadians(tank.getRotation()))*2);
         }
 
 
         if (up && canMoveUp) {
-            tank.translate(Math.cos(Math.toRadians(tank.getRotation())), Math.sin(Math.toRadians(tank.getRotation())));
-            hitbox.translate(Math.cos(Math.toRadians(tank.getRotation())), Math.sin(Math.toRadians(tank.getRotation())));
+            tank.translate(Math.cos(Math.toRadians(tank.getRotation()))*2, Math.sin(Math.toRadians(tank.getRotation()))*2);
+            hitbox.translate(Math.cos(Math.toRadians(tank.getRotation()))*2, Math.sin(Math.toRadians(tank.getRotation()))*2);
         }
 
-        for (int i = 0; i < numberOfProjectiles; i++) {
-            projectiles[i].move();
-        }
     }
 
 
@@ -132,7 +134,7 @@ public class Tank extends GameObject {
     public void shoot() {
 
         if (numberOfProjectiles < 3) {
-            projectiles[numberOfProjectiles] = new Projectile(this, tank.getRotation());
+            game.addProjectile( new Projectile(this, tank.getRotation()));
             numberOfProjectiles++;
         }
     }

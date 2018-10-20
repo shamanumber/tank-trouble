@@ -1,6 +1,7 @@
 package org.academiadecodigo.invictus.tanktrouble.GameObjects.Tank;
 
 import org.academiadecodigo.invictus.tanktrouble.Field.FieldPosition;
+import org.academiadecodigo.invictus.tanktrouble.Game;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 
 public class Player2Tank extends Tank {
@@ -13,8 +14,8 @@ public class Player2Tank extends Tank {
             KeyboardEvent.KEY_Q
     };
 
-    public Player2Tank(FieldPosition pos) {
-        super(pos, "lib/Resources/Pictures/tank2.png", KEY_CODES);
+    public Player2Tank(FieldPosition pos, Game game) {
+        super(pos, "lib/Resources/Pictures/tank2.png", KEY_CODES,game);
 
     }
 }

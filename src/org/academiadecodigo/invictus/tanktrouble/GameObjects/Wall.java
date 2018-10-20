@@ -7,14 +7,14 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class Wall extends GameObject {
 
     private Rectangle rectangle;
-
+    public final boolean IS_HORIZONTAL;
     int x;
     int y;
     int width;
     int height;
 
-    public Wall(int x, int y, int width, int height) {
-
+    public Wall(int x, int y, int width, int height, boolean isHorizontal) {
+        IS_HORIZONTAL=isHorizontal;
         this.x = x;
         this.y = y;
         this.width = width;
@@ -22,7 +22,6 @@ public class Wall extends GameObject {
         rectangle = new Rectangle(x, y, width, height);
         rectangle.setColor(Color.LIGHT_GRAY);
         rectangle.fill();
-
 
     }
 
