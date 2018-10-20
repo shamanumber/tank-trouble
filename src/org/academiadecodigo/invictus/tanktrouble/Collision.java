@@ -15,18 +15,14 @@ public class Collision {
             for (int j = 0; j < tanks.length; j++) {
                 if (collides(tanks[j], walls[i])) {
                     if (tanks[j].isUp()) {
-                        tanks[j].setCanMoveUp(false);
-                        tanks[j].setCanMoveDown(true);
-                        return;
+                        tanks[j].getPicture().translate(-Math.cos(Math.toRadians(tanks[j].getPicture().getRotation()))*2, -Math.sin(Math.toRadians(tanks[j].getPicture().getRotation()))*2);
+                        continue;
                     }
                     if (tanks[j].isDown()) {
-                        tanks[j].setCanMoveDown(false);
-                        tanks[j].setCanMoveUp(true);
-                        return;
+                        tanks[j].getPicture().translate(Math.cos(Math.toRadians(tanks[j].getPicture().getRotation()))*2, Math.sin(Math.toRadians(tanks[j].getPicture().getRotation()))*2);
+                        continue;
                     }
                 }
-                tanks[j].setCanMoveDown(true);
-                tanks[j].setCanMoveUp(true);
             }
         }
         for (int i = 0; i < walls.length; i++) {
@@ -50,6 +46,7 @@ public class Collision {
                       tanks[i].destroyed();
                       projectiles[j].destroyed();
                       Thread.sleep(100000000);
+
                     }
                 }
             }
@@ -58,23 +55,27 @@ public class Collision {
 
 
     public boolean collides(GameObject p1, GameObject p2) {
+        int hitboxModifier=0;
+        if(p1 instanceof Tank){
+            hitboxModifier=18;
 
-        if (p1.getX() > p2.getX() && p1.getX() < p2.getX() + p2.getWidth() && p1.getY() > p2.getY() && p1.getY() < p2.getY() + p2.getHeight()
+        }
+        if (p1.getX() + hitboxModifier > p2.getX() && p1.getX()+ hitboxModifier < p2.getX() + p2.getWidth() && p1.getY() > p2.getY() && p1.getY() < p2.getY() + p2.getHeight()
         ) {
             return true;
         }
 
-        if (p1.getX() + p1.getWidth() > p2.getX() && p1.getX() + p1.getWidth() < p2.getX() + p2.getWidth() && p1.getY() > p2.getY() && p1.getY() < p2.getY() + p2.getHeight()
+        if (p1.getX() + p1.getWidth() - hitboxModifier > p2.getX() && p1.getX() + p1.getWidth() -hitboxModifier< p2.getX() + p2.getWidth() && p1.getY() > p2.getY() && p1.getY() < p2.getY() + p2.getHeight()
         ) {
             return true;
         }
 
-        if (p1.getX() > p2.getX() && p1.getX() < p2.getX() + p2.getWidth() && p1.getY() + p1.getHeight() > p2.getY() && p1.getY() + p1.getHeight() < p2.getY() + p2.getHeight()
+        if (p1.getX() + hitboxModifier> p2.getX() && p1.getX() +hitboxModifier< p2.getX() + p2.getWidth() && p1.getY() + p1.getHeight() > p2.getY() && p1.getY() + p1.getHeight() < p2.getY() + p2.getHeight()
         ) {
             return true;
         }
 
-        if (p1.getX() + p1.getWidth() > p2.getX() && p1.getX() < p2.getX() + p2.getWidth() && p1.getY() + p1.getHeight() > p2.getY() && p1.getY() + p1.getHeight() < p2.getY() + p2.getHeight()
+        if (p1.getX() + p1.getWidth() - hitboxModifier > p2.getX() && p1.getX() + p1.getWidth() - hitboxModifier < p2.getX() + p2.getWidth() && p1.getY() + p1.getHeight() > p2.getY() && p1.getY() + p1.getHeight() < p2.getY() + p2.getHeight()
         ) {
             return true;
         }

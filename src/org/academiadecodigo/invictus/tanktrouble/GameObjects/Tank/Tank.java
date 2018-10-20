@@ -15,22 +15,15 @@ public class Tank extends GameObject {
     private int numberOfProjectiles;
     private boolean up;
     private boolean down;
-    private boolean canMoveUp;
-    private boolean canMoveDown;
     private boolean left;
     private boolean right;
-    private Rectangle hitbox;
     private Game game;
 
     public Tank(FieldPosition pos, String path, int[] KEY_CODES, Game game) {
-        hitbox = new Rectangle(pos.getX(), pos.getY(), 60, 42);
-        hitbox.draw();
         this.game = game;
         tank = new Picture(pos.getX(), pos.getY(), path);
         new TankActions(this, KEY_CODES);
         tank.draw();
-        canMoveDown = true;
-        canMoveUp = true;
     }
 
     @Override
@@ -42,6 +35,10 @@ public class Tank extends GameObject {
     public void resetBullet(){
         numberOfProjectiles--;
         System.out.println(numberOfProjectiles);
+    }
+
+    public Picture getPicture(){
+        return tank;
     }
 
     @Override
@@ -81,24 +78,12 @@ public class Tank extends GameObject {
         if (left) {
             tank.setRotation(tank.getRotation() - 3);
         }
-        if (down && canMoveDown) {
+        if (down) {
             tank.translate(-Math.cos(Math.toRadians(tank.getRotation()))*2, -Math.sin(Math.toRadians(tank.getRotation()))*2);
-            hitbox.translate(-Math.cos(Math.toRadians(tank.getRotation()))*2, -Math.sin(Math.toRadians(tank.getRotation()))*2);
         }
-        if (down && !canMoveDown) {
+
+        if (up) {
             tank.translate(Math.cos(Math.toRadians(tank.getRotation()))*2, Math.sin(Math.toRadians(tank.getRotation()))*2);
-            hitbox.translate(Math.cos(Math.toRadians(tank.getRotation()))*2, Math.sin(Math.toRadians(tank.getRotation()))*2);
-        }
-
-        if (up && !canMoveUp) {
-            tank.translate(-Math.cos(Math.toRadians(tank.getRotation()))*2, -Math.sin(Math.toRadians(tank.getRotation()))*2);
-            hitbox.translate(-Math.cos(Math.toRadians(tank.getRotation()))*2, -Math.sin(Math.toRadians(tank.getRotation()))*2);
-        }
-
-
-        if (up && canMoveUp) {
-            tank.translate(Math.cos(Math.toRadians(tank.getRotation()))*2, Math.sin(Math.toRadians(tank.getRotation()))*2);
-            hitbox.translate(Math.cos(Math.toRadians(tank.getRotation()))*2, Math.sin(Math.toRadians(tank.getRotation()))*2);
         }
 
     }
@@ -121,14 +106,6 @@ public class Tank extends GameObject {
 
     public void setRight(boolean right) {
         this.right = right;
-    }
-
-    public void setCanMoveUp(boolean canMoveUp) {
-        this.canMoveUp = canMoveUp;
-    }
-
-    public void setCanMoveDown(boolean canMoveDown) {
-        this.canMoveDown = canMoveDown;
     }
 
     public void shoot() {

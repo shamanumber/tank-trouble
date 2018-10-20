@@ -37,6 +37,7 @@ public class Projectile extends GameObject {
     }
 
     public void destroyed(){
+
         bullet.delete();
     }
 
