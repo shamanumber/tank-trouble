@@ -1,50 +1,70 @@
 package org.academiadecodigo.invictus.tanktrouble;
 
-import javafx.scene.paint.Stop;
-import org.academiadecodigo.invictus.tanktrouble.Field.SimpleGfxGrid;
-import org.academiadecodigo.invictus.tanktrouble.Tank.Player1Tank;
-import org.academiadecodigo.invictus.tanktrouble.Tank.Player2Tank;
-import org.academiadecodigo.invictus.tanktrouble.Tank.Tank;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.invictus.tanktrouble.GameObjects.GameObject;
+import org.academiadecodigo.invictus.tanktrouble.GameObjects.Wall;
+import org.academiadecodigo.invictus.tanktrouble.GameObjects.Tank.Tank;
 
-import java.util.concurrent.Delayed;
 
 public class Collision {
 
-    SimpleGfxGrid grid;
-    Tank player1Tank;
-    Tank player2Tank;
-    Tank isUp;
-    Tank isDown;
 
+    public void checkCollisions(Tank[] tanks, Wall[] walls) {
 
-    public boolean checkCollisions(SimpleGfxGrid simpleGfxGrid, Tank player1Tank, Tank player2Tank) {
-
-
-        if (player1Tank.getX() == grid.getWidth() || player1Tank.getX() == grid.getX()
-                || player1Tank.getY() == grid.getHeight() || player1Tank.getY() == grid.getY()) {
-            for(int i = 0; i<2;i++) {
-
-                isUp.setUp(false);
-                isDown.setDown(false);
-
+        for (int i = 0; i < walls.length; i++) {
+            for (int j = 0; j < tanks.length; j++) {
+                System.out.println("Esd gay");
+                if (collides(tanks[j], walls[i])) {
+                    if (tanks[j].isUp()) {
+                        tanks[j].setCanMoveUp(false);
+                        tanks[j].setCanMoveDown(true);
+                        return;
+                    }
+                    if (tanks[j].isDown()) {
+                        tanks[j].setCanMoveDown(false);
+                        tanks[j].setCanMoveUp(true);
+                        return;
+                    }
+                }
+                    tanks[j].setCanMoveDown(true);
+                    tanks[j].setCanMoveUp(true);
             }
 
-        }
-        if (player2Tank.getX() == grid.getWidth() || player2Tank.getX() == grid.getX()
-                || player2Tank.getY() == grid.getHeight() || player2Tank.getY() == grid.getY()) {
-            for (int i = 0; i < 2; i++) {
-                isUp.setUp(false);
-                isDown.setDown(false);
 
-            }
         }
-        //isUp.setUp(true);
-        //isDown.setDown(true);
+    }
+
+
+    public boolean collides(GameObject p1, GameObject p2) {
+
+        if (p1.getX() > p2.getX() && p1.getX() < p2.getX() + p2.getWidth() && p1.getY() > p2.getY() && p1.getY() < p2.getY() + p2.getHeight()
+        ) {
+            System.out.println("colisao 1");
+            return true;
+        }
+
+        if (p1.getX() + p1.getWidth() > p2.getX() && p1.getX() + p1.getWidth() < p2.getX() + p2.getWidth() && p1.getY() > p2.getY() && p1.getY() < p2.getY() + p2.getHeight()
+        ) {
+            System.out.println("colisao 2");
+            return true;
+        }
+
+        if (p1.getX() > p2.getX() && p1.getX() < p2.getX() + p2.getWidth() && p1.getY() + p1.getHeight() > p2.getY() && p1.getY() + p1.getHeight() < p2.getY() + p2.getHeight()
+        ) {
+            System.out.println("colisao 3");
+            return true;
+        }
+
+        if (p1.getX() + p1.getWidth() > p2.getX() && p1.getX() < p2.getX() + p2.getWidth() && p1.getY() + p1.getHeight() > p2.getY() && p1.getY() + p1.getHeight() < p2.getY() + p2.getHeight()
+        ) {
+            System.out.println("colisao 4____________________________________");
+            return true;
+        }
+        System.out.println("Não colide");
         return false;
-
     }
 }
+
+
 
 
 /*

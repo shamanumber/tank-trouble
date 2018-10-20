@@ -2,9 +2,10 @@ package org.academiadecodigo.invictus.tanktrouble;
 
 import org.academiadecodigo.invictus.tanktrouble.Field.FieldPosition;
 import org.academiadecodigo.invictus.tanktrouble.Field.SimpleGfxGrid;
-import org.academiadecodigo.invictus.tanktrouble.Tank.Player1Tank;
-import org.academiadecodigo.invictus.tanktrouble.Tank.Player2Tank;
-import org.academiadecodigo.invictus.tanktrouble.Tank.Tank;
+import org.academiadecodigo.invictus.tanktrouble.GameObjects.Wall;
+import org.academiadecodigo.invictus.tanktrouble.GameObjects.Tank.Player1Tank;
+import org.academiadecodigo.invictus.tanktrouble.GameObjects.Tank.Player2Tank;
+import org.academiadecodigo.invictus.tanktrouble.GameObjects.Tank.Tank;
 
 public class Game {
 
@@ -12,13 +13,13 @@ public class Game {
     private Tank player2;
     private SimpleGfxGrid field;
     private Collision collisionDetect;
-
-
-    public Game(SimpleGfxGrid grid) {
-
-        this.player1 = new Player1Tank(new FieldPosition(20, 20, grid));
-        this.player2 = new Player2Tank(new FieldPosition(40, 40, grid));
-        this.field = grid;
+    private Wall[] walls;
+    private Tank[] tanks = new Tank[2];
+    public Game() {
+        field = new SimpleGfxGrid(400,400);
+        walls= field.init(1);
+        tanks[0]= new Player1Tank(new FieldPosition(50, 60, field));
+        tanks[1] = new Player2Tank(new FieldPosition(40, 40, field));
         collisionDetect = new Collision();
     }
 
@@ -27,9 +28,11 @@ public class Game {
 
         while (true) {
 
-            player1.move();
-            player2.move();
-            collisionDetect.checkCollisions(field, player1, player2);
+           for(int i = 0; i<tanks.length;i++){
+               tanks[i].move();
+           }
+
+            collisionDetect.checkCollisions( tanks,walls);
 
             Thread.sleep(16);
         }

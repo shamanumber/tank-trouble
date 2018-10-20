@@ -1,4 +1,4 @@
-package org.academiadecodigo.invictus.tanktrouble.Tank;
+package org.academiadecodigo.invictus.tanktrouble.GameObjects.Tank;
 
 import org.academiadecodigo.invictus.tanktrouble.Field.FieldPosition;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;

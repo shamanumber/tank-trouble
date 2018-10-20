@@ -4,13 +4,7 @@ import org.academiadecodigo.invictus.tanktrouble.Field.SimpleGfxGrid;
 
 public class Main {
     public static void main(String[] args) {
-
-        SimpleGfxGrid grid = new SimpleGfxGrid(170,90);
-
-        grid.init(1);
-
-
-        Game g = new Game(grid);
+        Game g = new Game();
         try{
             g.start();
         }catch (InterruptedException ex){
