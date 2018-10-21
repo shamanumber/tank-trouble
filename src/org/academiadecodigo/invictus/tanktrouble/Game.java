@@ -7,6 +7,7 @@ import org.academiadecodigo.invictus.tanktrouble.GameObjects.Wall;
 import org.academiadecodigo.invictus.tanktrouble.GameObjects.Tank.Player1Tank;
 import org.academiadecodigo.invictus.tanktrouble.GameObjects.Tank.Player2Tank;
 import org.academiadecodigo.invictus.tanktrouble.GameObjects.Tank.Tank;
+import org.academiadecodigo.invictus.tanktrouble.Tank.Status;
 
 public class Game {
 
@@ -15,6 +16,9 @@ public class Game {
     private Wall[] walls;
     private Tank[] tanks = new Tank[2];
     private Projectile[] projectiles = new Projectile[tanks.length * 3];
+    private Menu menu;
+    private Status status;
+
 
     public Game() {
         field = new SimpleGfxGrid(1500, 1500);
@@ -22,24 +26,34 @@ public class Game {
         tanks[0] = new Player1Tank(new FieldPosition(50, 60, field), this);
         tanks[1] = new Player2Tank(new FieldPosition(600, 600, field), this);
         collisionDetect = new Collision();
+        menu = new Menu();
     }
 
 
     public void start() throws InterruptedException {
 
-        while (true) {
+        status = Status.MENU;
+        status = menu.play();
 
-            for (int i = 0; i < tanks.length; i++) {
-                tanks[i].move();
-            }
-            collisionDetect.checkCollisions(tanks, walls, projectiles);
+        if (status == Status.QUIT) {
+            System.exit(0);
+        }
+        if (status == Status.GAME) {
+            while (true) {
 
-            for (int i = 0; i < projectiles.length; i++) {
-                if (projectiles[i] != null) {
-                    projectiles[i].move();
+                for (int i = 0; i < tanks.length; i++) {
+                    tanks[i].move();
                 }
+                collisionDetect.checkCollisions(tanks, walls, projectiles);
+
+                for (int i = 0; i < projectiles.length; i++) {
+                    if (projectiles[i] != null) {
+                        projectiles[i].move();
+                    }
+                }
+                Thread.sleep(16);
+
             }
-            Thread.sleep(16);
         }
     }
 
@@ -61,6 +75,9 @@ public class Game {
         }
 
     }
-
-
+    public enum Status {
+        MENU,
+        GAME,
+        QUIT
+    }
 }
