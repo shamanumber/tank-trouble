@@ -6,6 +6,7 @@ import org.academiadecodigo.invictus.tanktrouble.Tank.Player1Tank;
 import org.academiadecodigo.invictus.tanktrouble.Tank.Player2Tank;
 import org.academiadecodigo.invictus.tanktrouble.Tank.Tank;
 
+
 public class Game {
 
     private Tank player1;
@@ -17,6 +18,7 @@ public class Game {
 
     public Game(SimpleGfxGrid grid) {
 
+        menu = new Menu();
         this.player1 = new Player1Tank(new FieldPosition(20, 20, grid));
         this.player2 = new Player2Tank(new FieldPosition(40, 40, grid));
         this.field = grid;
@@ -25,7 +27,14 @@ public class Game {
 
     public void start() throws InterruptedException {
 
+        status = Status.MENU;
+        status = menu.play();
 
+        if (status == Status.QUIT) {
+            System.exit(0);
+        }
+
+        if (status == Status.GAME) {
             while (true) {
                 player1.move();
                 player2.move();
@@ -35,5 +44,9 @@ public class Game {
 
     }
 
-
+    public enum Status {
+        MENU,
+        GAME,
+        QUIT
+    }
 }

@@ -6,48 +6,54 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
+import javax.sound.sampled.Clip;
+
 
 public class Menu {
 
-    private Status status;
+    private Game.Status status;
     private Picture menu;
-    private Picture startGame;
-    private Picture exit;
     private Picture toy;
+    private Sound introMenu;
+
 
 
     public Menu() {
 
         menu = new Picture(0, 0, "lib/Resources/Pictures/tankACback.jpg");
-        startGame = new Picture(1, 1, "lib/Resources/Pictures/pressstart.gif");
-        exit = new Picture(2, 2, "lib/Resources/Pictures/exit.png");
-        toy = new Picture(10, 10, "lib/Resources/Pictures/toy.png");
+        toy = new Picture(1450, 770, "lib/Resources/Pictures/toy.png");
+        introMenu = new Sound(" lib/Resources/Sound/IntroEyeoftheTiger1.wav");
         new MenuHandler();
-        status = Status.MENU;
+        status = Game.Status.MENU;
 
     }
 
     public Game.Status play() throws InterruptedException {
 
-        status = menu.play();
-
         menu.draw();
+        toy.draw();
+
+        introMenu.play(true);
 
         while (status == Game.Status.MENU) {
             Thread.sleep(50);
         }
 
         menu.delete();
+        toy.delete();
+        introMenu.stop();
+        introMenu.close();
+
         return status;
 
-        if (status == Status.QUIT) {
+       /* if (status == Game.Status.QUIT) {
             System.exit(0);
         }
 
-        if (status == Status.GAME) {
+        if (status == Game.Status.GAME) {
 
 
-        }
+        }*/
     }
 
     private class MenuHandler implements KeyboardHandler {
@@ -61,7 +67,7 @@ public class Menu {
 
         private void mapKeys() {
             KeyboardEvent pressGame = new KeyboardEvent();
-            pressGame.setKey(KeyboardEvent.KEY_P);
+            pressGame.setKey(KeyboardEvent.KEY_S);
             pressGame.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
             k.addEventListener(pressGame);
 
@@ -75,7 +81,7 @@ public class Menu {
         public void keyPressed(KeyboardEvent e) {
 
             switch (e.getKey()) {
-                case KeyboardEvent.KEY_P:
+                case KeyboardEvent.KEY_S:
                     status = Game.Status.GAME;
                     break;
                 case KeyboardEvent.KEY_Q:
@@ -91,6 +97,7 @@ public class Menu {
 
         }
     }
+
 }
 
 
