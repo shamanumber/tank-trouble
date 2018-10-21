@@ -18,7 +18,7 @@ public class Projectile extends GameObject {
     public Projectile(Tank tank, int angle) {
         this.angle = angle;
         this.tank = tank;
-        bullet = new Picture(tank.getX() + tank.getWidth()/2 -10 + Math.cos(Math.toRadians(angle))*60, tank.getY() + tank.getHeight()/2 -10 +Math.sin(Math.toRadians(angle))*60, "lib/Resources/Pictures/17980_1.png");
+        bullet = new Picture(tank.getX() + tank.getWidth()/2 -10 + Math.cos(Math.toRadians(angle))*60, tank.getY() + tank.getHeight()/2 -10 +Math.sin(Math.toRadians(angle))*60, "lib/Resources/Pictures/Bullet.png");
         bullet.draw();
         bullet.setRotation(angle);
         speedX = Math.cos(Math.toRadians(angle)) * 4;
