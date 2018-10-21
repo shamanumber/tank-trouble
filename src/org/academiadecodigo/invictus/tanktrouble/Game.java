@@ -22,7 +22,9 @@ public class Game {
 
     public Game() {
         field = new SimpleGfxGrid(1500, 1500);
-        walls = field.init(1);
+        int random = (int)Math.floor(Math.random()*);
+        System.out.println(random);
+        walls = field.init(random);
         tanks[0] = new Player1Tank(new FieldPosition(50, 60, field), this);
         tanks[1] = new Player2Tank(new FieldPosition(600, 600, field), this);
         collisionDetect = new Collision();

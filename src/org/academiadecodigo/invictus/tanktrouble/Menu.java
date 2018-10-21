@@ -46,14 +46,7 @@ public class Menu {
 
         return status;
 
-       /* if (status == Game.Status.QUIT) {
-            System.exit(0);
-        }
 
-        if (status == Game.Status.GAME) {
-
-
-        }*/
     }
 
     private class MenuHandler implements KeyboardHandler {

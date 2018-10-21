@@ -27,7 +27,7 @@ public class SimpleGfxGrid {
 
 
     public Wall[] maze(int board) {
-        if (board == 1) {
+        if (board == 0) {
 
             Wall[] walls = new Wall[27];
             walls[0] = new Wall(PADDING, PADDING, 1200, 40, true);
@@ -69,7 +69,7 @@ public class SimpleGfxGrid {
             return walls;
         }
 
-        if (board == 2) {
+        if (board == 1) {
 
             Wall[] walls = new Wall[25];
             walls[0] = new Wall(PADDING, PADDING, 1200, 40, true);
@@ -108,7 +108,7 @@ public class SimpleGfxGrid {
             return walls;
         }
 
-        if (board == 3) {
+        if (board == 2) {
 
             Wall[] walls = new Wall[22];
             walls[0] = new Wall(PADDING, PADDING, 1200, 40, true);
