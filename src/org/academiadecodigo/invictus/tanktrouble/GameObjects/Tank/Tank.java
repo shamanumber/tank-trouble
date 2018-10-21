@@ -34,7 +34,6 @@ public class Tank extends GameObject {
 
     public void resetBullet(){
         numberOfProjectiles--;
-        System.out.println(numberOfProjectiles);
     }
 
     public Picture getPicture(){
