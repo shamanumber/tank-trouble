@@ -9,6 +9,7 @@ import org.academiadecodigo.invictus.tanktrouble.GameObjects.Tank.Tank;
 public class Collision {
 
 
+
     public void checkCollisions(Tank[] tanks, Wall[] walls, Projectile[] projectiles) throws InterruptedException {
 
         for (int i = 0; i < walls.length; i++) {
@@ -46,7 +47,7 @@ public class Collision {
                       tanks[i].destroyed();
                       projectiles[j].destroyed();
                       Thread.sleep(300);
-                      
+
                     }
                 }
             }

@@ -20,10 +20,8 @@ public class Game {
 
 
     public Game() {
-
         menu = new Menu();
         status = Status.MENU;
-
         field = new SimpleGfxGrid(1500, 1500);
         int random = (int)Math.floor(Math.random() * 1);
         System.out.println(random);
