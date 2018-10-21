@@ -7,7 +7,6 @@ import org.academiadecodigo.invictus.tanktrouble.GameObjects.Wall;
 import org.academiadecodigo.invictus.tanktrouble.GameObjects.Tank.Player1Tank;
 import org.academiadecodigo.invictus.tanktrouble.GameObjects.Tank.Player2Tank;
 import org.academiadecodigo.invictus.tanktrouble.GameObjects.Tank.Tank;
-import org.academiadecodigo.invictus.tanktrouble.Tank.Status;
 
 public class Game {
 
@@ -21,20 +20,22 @@ public class Game {
 
 
     public Game() {
+
+        menu = new Menu();
+        status = Status.MENU;
+
         field = new SimpleGfxGrid(1500, 1500);
-        int random = (int)Math.floor(Math.random()*);
+        int random = (int)Math.floor(Math.random() * 1);
         System.out.println(random);
         walls = field.init(random);
         tanks[0] = new Player1Tank(new FieldPosition(50, 60, field), this);
         tanks[1] = new Player2Tank(new FieldPosition(600, 600, field), this);
         collisionDetect = new Collision();
-        menu = new Menu();
     }
 
 
     public void start() throws InterruptedException {
 
-        status = Status.MENU;
         status = menu.play();
 
         if (status == Status.QUIT) {

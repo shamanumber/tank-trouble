@@ -45,10 +45,8 @@ public class Collision {
                     if(collides(projectiles[j] , tanks[i])){
                       tanks[i].destroyed();
                       projectiles[j].destroyed();
-                      // Mensagem jogador vencedor!
-                      Thread.sleep(100);
-                      //volta ao menu
-
+                      Thread.sleep(300);
+                      
                     }
                 }
             }

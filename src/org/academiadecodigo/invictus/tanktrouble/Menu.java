@@ -21,7 +21,7 @@ public class Menu {
     public Menu() {
 
         menu = new Picture(0, 0, "lib/Resources/Pictures/tankACback.jpg");
-        toy = new Picture(1450, 770, "lib/Resources/Pictures/toy.png");
+        toy = new Picture(1050, 800, "lib/Resources/Pictures/toy.png");
         introMenu = new Sound(" lib/Resources/Sound/IntroEyeoftheTiger1.wav");
         new MenuHandler();
         status = Game.Status.MENU;
@@ -34,6 +34,7 @@ public class Menu {
         toy.draw();
 
         introMenu.play(true);
+        introMenu.loopIndef();
 
         while (status == Game.Status.MENU) {
             Thread.sleep(50);
