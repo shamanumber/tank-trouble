@@ -1,5 +1,6 @@
 package org.academiadecodigo.invictus.tanktrouble;
 
+import org.academiadecodigo.invictus.tanktrouble.Field.FieldPosition;
 import org.academiadecodigo.invictus.tanktrouble.Field.SimpleGfxGrid;
 import org.academiadecodigo.invictus.tanktrouble.Tank.Player1Tank;
 import org.academiadecodigo.invictus.tanktrouble.Tank.Player2Tank;
@@ -16,12 +17,12 @@ public class Collision {
     public boolean checkCollisions(SimpleGfxGrid grid, Player1Tank player1Tank, Player2Tank player2Tank) {
 
 
-        if (player1Tank.getx() == grid.getWidth() || player1Tank.getPos().getx() == grid.getX()
-                || player1Tank.getPos().gety() == grid.getHeight() || player1Tank.getPos().gety() == grid.getY()) {
+        if (player1Tank.getX() == grid.getWidth() || player1Tank.getX() == grid.getX()
+                || player1Tank.getY() == grid.getHeight() || player1Tank.getY() == grid.getY()) {
             return true;
         }
-        if (player2Tank.getPos().getx() == grid.getWidth() || player2Tank.getPos().getx() == grid.getX()
-                || player2Tank.getPos().gety() == grid.getHeight() || player2Tank.getPos().gety() == grid.getY()) {
+        if (player2Tank.getX() == grid.getWidth() || player2Tank.getX() == grid.getX()
+                || player2Tank.getY() == grid.getHeight() || player2Tank.getY() == grid.getY()) {
             return true;
         }
         return false;

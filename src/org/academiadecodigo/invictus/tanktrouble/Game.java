@@ -11,6 +11,8 @@ public class Game {
     private Tank player1;
     private Tank player2;
     private SimpleGfxGrid field;
+    private Menu menu;
+    private Status status;
 
 
     public Game(SimpleGfxGrid grid) {
@@ -23,16 +25,15 @@ public class Game {
 
     public void start() throws InterruptedException {
 
-        while (true) {
 
-            player1.move();
-            player2.move();
-            Thread.sleep(16);
+            while (true) {
+                player1.move();
+                player2.move();
+                Thread.sleep(16);
+            }
         }
+
     }
-
-
-
 
 
 }

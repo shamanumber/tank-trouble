@@ -87,9 +87,6 @@ public class SimpleGfxGrid {
         return PADDING + cellSize * column;
     }
 
-<<<<<<< HEAD
-}
-=======
     public void maze(int maze){
         if (maze==1){
             Wall[] walls = new Wall[7];
@@ -116,4 +113,3 @@ public class SimpleGfxGrid {
 }
 
 
->>>>>>> 237f577d769f77d7db7bcc7b51a6df19c1411f24
