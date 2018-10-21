@@ -23,17 +23,22 @@ public class Game {
     public Game() {
         menu = new Menu();
         status = Status.MENU;
+
+
+    }
+
+
+
+    public void start() throws InterruptedException {
+
         field = new SimpleGfxGrid(1500, 1500);
         int random=(int)Math.floor(Math.random()* (Mazes.values().length));
         walls = field.init(random);
         tanks[0] = new Player1Tank(new FieldPosition(50, 60, field), this);
         tanks[1] = new Player2Tank(new FieldPosition(600, 600, field), this);
         collisionDetect = new Collision();
-    }
 
 
-
-    public void start() throws InterruptedException {
 
         status = menu.play();
 

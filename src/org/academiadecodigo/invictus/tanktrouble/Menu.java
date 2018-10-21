@@ -36,7 +36,7 @@ public class Menu {
         introMenu.loopIndef();
 
         while (status == Game.Status.MENU) {
-            Thread.sleep(50);
+            Thread.sleep(400);
         }
 
         menu.delete();

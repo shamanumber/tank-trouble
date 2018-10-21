@@ -5,6 +5,8 @@ import org.academiadecodigo.invictus.tanktrouble.Field.SimpleGfxGrid;
 import org.academiadecodigo.invictus.tanktrouble.Game;
 import org.academiadecodigo.invictus.tanktrouble.GameObjects.GameObject;
 import org.academiadecodigo.invictus.tanktrouble.GameObjects.Projectile;
+import org.academiadecodigo.invictus.tanktrouble.Main;
+import org.academiadecodigo.invictus.tanktrouble.Menu;
 import org.academiadecodigo.invictus.tanktrouble.Sound;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
@@ -34,11 +36,11 @@ public class Tank extends GameObject {
         return tank.getX();
     }
 
-    public void resetBullet(){
+    public void resetBullet() {
         numberOfProjectiles--;
     }
 
-    public Picture getPicture(){
+    public Picture getPicture() {
         return tank;
     }
 
@@ -62,14 +64,20 @@ public class Tank extends GameObject {
     }
 
     @Override
-    public int getWidth(){
+    public int getWidth() {
         return tank.getWidth();
     }
 
-    public void destroyed(){
+    public void destroyed() throws InterruptedException {
         tank.delete();
-         Picture playerWon = new Picture(500,300, "lib/Resources/Pictures/toy wins.png" );
-         playerWon.draw();
+        Picture tankExplosion = new Picture(getX(), getY(), "lib/Resources/Pictures/explosionfinal.png");
+        tankExplosion.draw();
+        Picture playerWon = new Picture(500, 300, "lib/Resources/Pictures/toy wins.png");
+        playerWon.draw();
+
+        Menu reStart = new Menu();
+
+        reStart.play();
     }
 
     public void move() {
@@ -82,11 +90,11 @@ public class Tank extends GameObject {
             tank.setRotation(tank.getRotation() - 3);
         }
         if (down) {
-            tank.translate(-Math.cos(Math.toRadians(tank.getRotation()))*2, -Math.sin(Math.toRadians(tank.getRotation()))*2);
+            tank.translate(-Math.cos(Math.toRadians(tank.getRotation())) * 2, -Math.sin(Math.toRadians(tank.getRotation())) * 2);
         }
 
         if (up) {
-            tank.translate(Math.cos(Math.toRadians(tank.getRotation()))*2, Math.sin(Math.toRadians(tank.getRotation()))*2);
+            tank.translate(Math.cos(Math.toRadians(tank.getRotation())) * 2, Math.sin(Math.toRadians(tank.getRotation())) * 2);
         }
 
     }
@@ -114,7 +122,7 @@ public class Tank extends GameObject {
     public void shoot() {
 
         if (numberOfProjectiles < 3) {
-            game.addProjectile( new Projectile(this, tank.getRotation()));
+            game.addProjectile(new Projectile(this, tank.getRotation()));
             numberOfProjectiles++;
             fire.play(true);
         }
