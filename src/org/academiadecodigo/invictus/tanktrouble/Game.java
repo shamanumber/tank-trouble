@@ -17,7 +17,7 @@ public class Game {
     private Projectile[] projectiles = new Projectile[tanks.length * 3];
 
     public Game() {
-        field = new SimpleGfxGrid(400, 400);
+        field = new SimpleGfxGrid(1500, 1500);
         walls = field.init(1);
         tanks[0] = new Player1Tank(new FieldPosition(50, 60, field), this);
         tanks[1] = new Player2Tank(new FieldPosition(600, 600, field), this);
