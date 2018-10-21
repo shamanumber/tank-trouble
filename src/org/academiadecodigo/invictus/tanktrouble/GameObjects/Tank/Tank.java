@@ -5,6 +5,7 @@ import org.academiadecodigo.invictus.tanktrouble.Field.SimpleGfxGrid;
 import org.academiadecodigo.invictus.tanktrouble.Game;
 import org.academiadecodigo.invictus.tanktrouble.GameObjects.GameObject;
 import org.academiadecodigo.invictus.tanktrouble.GameObjects.Projectile;
+import org.academiadecodigo.invictus.tanktrouble.Sound;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
@@ -18,6 +19,7 @@ public class Tank extends GameObject {
     private boolean left;
     private boolean right;
     private Game game;
+    private Sound fire = new Sound(" lib/Resources/Sound/disparo.wav");
 
     public Tank(FieldPosition pos, String path, int[] KEY_CODES, Game game) {
         this.game = game;
@@ -66,6 +68,8 @@ public class Tank extends GameObject {
 
     public void destroyed(){
         tank.delete();
+         Picture playerWon = new Picture(500,300, "lib/Resources/Pictures/toy wins.png" );
+         playerWon.draw();
     }
 
     public void move() {
@@ -112,6 +116,7 @@ public class Tank extends GameObject {
         if (numberOfProjectiles < 3) {
             game.addProjectile( new Projectile(this, tank.getRotation()));
             numberOfProjectiles++;
+            fire.play(true);
         }
     }
 
