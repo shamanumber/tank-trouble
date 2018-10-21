@@ -38,7 +38,7 @@ public class Game {
         if (status == Status.QUIT) {
             System.exit(0);
         }
-        if (status == Status.QUIT) {
+        if (status == Status.GAME) {
             while (true) {
 
                 for (int i = 0; i < tanks.length; i++) {
