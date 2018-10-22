@@ -51,13 +51,7 @@ public class Game {
                 for (int i = 0; i < projectiles.length; i++) {
                     if (projectiles[i] != null) {
                         projectiles[i].move();
-                        for(int j = 0; j <tanks.length;j++){
-                            if(tanks[j].isDestroyed()){
-                                projectiles[i].destroyed();
-                            }
-                        }
                     }
-
 
                 }
                 Thread.sleep(16);
@@ -73,14 +67,9 @@ public class Game {
         for (int i = 0; i < projectiles.length; i++) {
 
             if (projectiles[i] == null) {
-                for (int j = 0; j < tanks.length; j++) {
-                    if (tanks[j].isDestroyed() == false) {
-                        projectiles[i] = projectile;
-                        return;
 
-                    }
-                }
-
+                projectiles[i] = projectile;
+                return;
             }
         }
         for (int i = 0; i < projectiles.length; i++) {
@@ -93,7 +82,11 @@ public class Game {
     }
 
     public void reset() {
-
+        for (int l = 0; l < projectiles.length; l++) {
+            if (projectiles[l] != null) {
+                projectiles[l].destroyed();
+            }
+        }
         for (int k = 0; k < tanks.length; k++) {
 
             tanks[k].delete();
@@ -102,7 +95,6 @@ public class Game {
             walls[m].delete();
         }
     }
-
 
     public enum Status {
         MENU,

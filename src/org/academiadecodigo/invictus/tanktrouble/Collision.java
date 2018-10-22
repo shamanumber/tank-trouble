@@ -44,7 +44,6 @@ public class Collision {
                 if (projectiles[j] != null) {
                     if (collides(projectiles[j], tanks[i])) {
                         tanks[i].destroyed();
-                        projectiles[j].destroyed();
                         Thread.sleep(3000);
                     }
                 }

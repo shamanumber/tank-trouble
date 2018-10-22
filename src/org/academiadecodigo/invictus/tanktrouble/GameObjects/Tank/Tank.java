@@ -86,17 +86,16 @@ public class Tank extends GameObject {
         Picture playerWon = new Picture(500, 300, "lib/Resources/Pictures/toy wins.png");
         playerWon.draw();
 
+        Thread.sleep(2000);
 
         tankExplosion.delete();
         playerWon.delete();
+
         game.reset();
         Game restart = new Game();
         restart.start();
 
 
-
-        // Menu reStart = new Menu();
-        // reStart.play();
     }
 
     public void setUp(boolean up) {
