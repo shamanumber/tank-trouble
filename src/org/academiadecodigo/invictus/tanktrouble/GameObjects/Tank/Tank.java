@@ -21,8 +21,8 @@ public class Tank extends GameObject {
     private boolean left;
     private boolean right;
     private Game game;
-    private Game getField;
     private Sound fire = new Sound(" lib/Resources/Sound/disparo.wav");
+    private boolean isDestroyed = false;
 
     public Tank(FieldPosition pos, String path, int[] KEY_CODES, Game game) {
         this.game = game;
@@ -70,6 +70,7 @@ public class Tank extends GameObject {
     }
 
     public void destroyed() throws InterruptedException {
+        isDestroyed = true;
         tank.delete();
         Picture tankExplosion = new Picture(getX(), getY(), "lib/Resources/Pictures/explosionfinal.png");
         tankExplosion.draw();
@@ -78,10 +79,11 @@ public class Tank extends GameObject {
 
         Thread.sleep(2500);
 
+
         tankExplosion.delete();
         playerWon.delete();
 
-
+        System.exit(1);
         Game restart = new Game();
         restart.start();
 
@@ -93,6 +95,27 @@ public class Tank extends GameObject {
        // Menu reStart = new Menu();
         // reStart.play();
     }
+
+    public void setUp(boolean up) {
+        this.up = up;
+    }
+
+
+    public void setDown(boolean down) {
+        this.down = down;
+    }
+
+
+    public void setLeft(boolean left) {
+        this.left = left;
+    }
+
+
+    public void setRight(boolean right) {
+        this.right = right;
+    }
+
+
 
     public void move() {
 
@@ -114,24 +137,6 @@ public class Tank extends GameObject {
     }
 
 
-    public void setUp(boolean up) {
-        this.up = up;
-    }
-
-
-    public void setDown(boolean down) {
-        this.down = down;
-    }
-
-
-    public void setLeft(boolean left) {
-        this.left = left;
-    }
-
-
-    public void setRight(boolean right) {
-        this.right = right;
-    }
 
     public void shoot() {
 

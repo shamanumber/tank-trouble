@@ -57,6 +57,7 @@ public class Game {
                     }
                 }
                 Thread.sleep(16);
+
             }
 
         }

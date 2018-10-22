@@ -48,6 +48,7 @@ public class Collision {
                       projectiles[j].destroyed();
                       Thread.sleep(300);
 
+
                     }
                 }
             }
