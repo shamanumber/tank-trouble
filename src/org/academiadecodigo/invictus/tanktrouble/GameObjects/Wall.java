@@ -22,7 +22,6 @@ public class Wall extends GameObject {
         rectangle = new Rectangle(x, y, width, height);
         rectangle.setColor(Color.LIGHT_GRAY);
         rectangle.fill();
-
     }
 
 
@@ -46,5 +45,7 @@ public class Wall extends GameObject {
         return height;
     }
 
-
+    public void delete(){
+        rectangle.delete();
+    }
 }

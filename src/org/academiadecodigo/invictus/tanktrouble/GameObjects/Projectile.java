@@ -1,22 +1,20 @@
 package org.academiadecodigo.invictus.tanktrouble.GameObjects;
 
-import org.academiadecodigo.invictus.tanktrouble.GameObjects.GameObject;
 import org.academiadecodigo.invictus.tanktrouble.GameObjects.Tank.Tank;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Projectile extends GameObject {
 
     private Picture bullet;
-    private int angle;
     private double speedX;
     private double speedY;
     private int bouncesLeft = 4;
     private Tank tank;
     private boolean isUsed;
+    private boolean destroyed;
 
 
     public Projectile(Tank tank, int angle) {
-        this.angle = angle;
         this.tank = tank;
         bullet = new Picture(tank.getX() + tank.getWidth()/2 -10 + Math.cos(Math.toRadians(angle))*60, tank.getY() + tank.getHeight()/2 -10 +Math.sin(Math.toRadians(angle))*60, "lib/Resources/Pictures/17980_1.png");
         bullet.draw();
@@ -24,6 +22,7 @@ public class Projectile extends GameObject {
         speedX = Math.cos(Math.toRadians(angle)) * 4;
         speedY = Math.sin(Math.toRadians(angle)) * 4;
         isUsed = true;
+        destroyed = false;
     }
 
     public void changeSpeedY() {
@@ -37,8 +36,8 @@ public class Projectile extends GameObject {
     }
 
     public void destroyed(){
-
         bullet.delete();
+        destroyed = true;
     }
 
     public void move() {
@@ -54,6 +53,7 @@ public class Projectile extends GameObject {
             }
         }
     }
+
 
     @Override
     public int getX() {
@@ -78,4 +78,5 @@ public class Projectile extends GameObject {
     public int getHeight() {
         return bullet.getHeight();
     }
+
 }

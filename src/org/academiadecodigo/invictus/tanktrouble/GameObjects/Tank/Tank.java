@@ -22,13 +22,14 @@ public class Tank extends GameObject {
     private boolean right;
     private Game game;
     private Sound fire = new Sound(" lib/Resources/Sound/disparo.wav");
-    private boolean isDestroyed = false;
+    private boolean destroyed;
 
     public Tank(FieldPosition pos, String path, int[] KEY_CODES, Game game) {
         this.game = game;
         tank = new Picture(pos.getX(), pos.getY(), path);
         new TankActions(this, KEY_CODES);
         tank.draw();
+        destroyed = false;
     }
 
     @Override
@@ -69,30 +70,32 @@ public class Tank extends GameObject {
         return tank.getWidth();
     }
 
+    public boolean isDestroyed() {
+        return destroyed;
+    }
+
+    public void delete() {
+        tank.delete();
+        destroyed = true;
+    }
+
     public void destroyed() throws InterruptedException {
-        isDestroyed = true;
         tank.delete();
         Picture tankExplosion = new Picture(getX(), getY(), "lib/Resources/Pictures/explosionfinal.png");
         tankExplosion.draw();
         Picture playerWon = new Picture(500, 300, "lib/Resources/Pictures/toy wins.png");
         playerWon.draw();
 
-        Thread.sleep(2500);
-
 
         tankExplosion.delete();
         playerWon.delete();
-
-        System.exit(1);
+        game.reset();
         Game restart = new Game();
         restart.start();
 
 
 
-        SimpleGfxGrid field = new SimpleGfxGrid(0,0);
-
-
-       // Menu reStart = new Menu();
+        // Menu reStart = new Menu();
         // reStart.play();
     }
 
@@ -116,7 +119,6 @@ public class Tank extends GameObject {
     }
 
 
-
     public void move() {
 
         if (right) {
@@ -137,13 +139,13 @@ public class Tank extends GameObject {
     }
 
 
-
     public void shoot() {
-
-        if (numberOfProjectiles < 3) {
-            game.addProjectile(new Projectile(this, tank.getRotation()));
-            numberOfProjectiles++;
-            fire.play(true);
+        if (destroyed == false) {
+            if (numberOfProjectiles < 3) {
+                game.addProjectile(new Projectile(this, tank.getRotation()));
+                numberOfProjectiles++;
+                fire.play(true);
+            }
         }
     }
 

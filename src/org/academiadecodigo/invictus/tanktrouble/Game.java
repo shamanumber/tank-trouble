@@ -8,9 +8,6 @@ import org.academiadecodigo.invictus.tanktrouble.GameObjects.Wall;
 import org.academiadecodigo.invictus.tanktrouble.GameObjects.Tank.Player1Tank;
 import org.academiadecodigo.invictus.tanktrouble.GameObjects.Tank.Player2Tank;
 import org.academiadecodigo.invictus.tanktrouble.GameObjects.Tank.Tank;
-import org.academiadecodigo.simplegraphics.graphics.Color;
-
-import java.awt.*;
 
 public class Game {
 
@@ -40,8 +37,8 @@ public class Game {
             field = new SimpleGfxGrid(1500, 1500);
             int random = (int) Math.floor(Math.random() * (Mazes.values().length));
             walls = field.init(random);
-            tanks[0] = new Player1Tank(new FieldPosition(50, 60, field), this);
-            tanks[1] = new Player2Tank(new FieldPosition(600, 600, field), this);
+            tanks[0] = new Player1Tank(new FieldPosition(50, 60), this);
+            tanks[1] = new Player2Tank(new FieldPosition(600, 600), this);
             collisionDetect = new Collision();
 
             while (true) {
@@ -54,7 +51,14 @@ public class Game {
                 for (int i = 0; i < projectiles.length; i++) {
                     if (projectiles[i] != null) {
                         projectiles[i].move();
+                        for(int j = 0; j <tanks.length;j++){
+                            if(tanks[j].isDestroyed()){
+                                projectiles[i].destroyed();
+                            }
+                        }
                     }
+
+
                 }
                 Thread.sleep(16);
 
@@ -64,15 +68,19 @@ public class Game {
     }
 
 
-
     public void addProjectile(Projectile projectile) {
 
         for (int i = 0; i < projectiles.length; i++) {
 
             if (projectiles[i] == null) {
+                for (int j = 0; j < tanks.length; j++) {
+                    if (tanks[j].isDestroyed() == false) {
+                        projectiles[i] = projectile;
+                        return;
 
-                projectiles[i] = projectile;
-                return;
+                    }
+                }
+
             }
         }
         for (int i = 0; i < projectiles.length; i++) {
@@ -82,6 +90,17 @@ public class Game {
             }
         }
 
+    }
+
+    public void reset() {
+
+        for (int k = 0; k < tanks.length; k++) {
+
+            tanks[k].delete();
+        }
+        for (int m = 0; m < walls.length; m++) {
+            walls[m].delete();
+        }
     }
 
 
