@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+<project name="ACTank" default="jarfile">
+
+    <target name="init" description="Initializes properties">
+        <property name="project.name" value="ACTank"/>
+        <property name="src.dir" value="src"/>
+        <property name="main.class" value="org.academiadecodigo.invictus.tanktrouble.Main"/>
+        <property name="build.dir" value="build"/>
+        <property name="classes.dir" value="src/build/classes"/>
+        <property name="lib.dir" value="libs"/>
+        <property name="resource.dir" value="lib/Resources"/>
+        <path id="classpath">
+            <fileset dir="${lib.dir}" includes="**/*.jar"/>
+        </path>
+    </target>
+
+    <target name="prepare" description="Creates build and class dirs" depends="init">
+        <mkdir dir="src/build/classes"/>
+    </target>
+
+    <target name="clean" description="Clean up" depends="init">
+        <delete dir=""/>
+    </target>
+
+    <target name="compile" description="Compiles src code" depends="prepare">
+        <javac srcdir="${src.dir}" destdir="src/build/classes">
+            <classpath refid="classpath"/>
+        </javac>
+    </target>
+
+    <target name="jarfile" description="Archives d code" depends="compile">
+        <jar destfile="${build.dir}/${project.name}.jar" basedir="src/build/classes">
+            <manifest>
+                <attribute name="Main-Class" value="${main.class}"/>
+                <attribute name="Class-Path" value="${lib.dir} ${resource.dir}"/>
+            </manifest>
+
+            <zipgroupfileset dir="${lib.dir}" includes="*.jar"/>
+            <fileset dir="">
+                <include name="**/${resource.dir}/**"/>
+            </fileset>
+        </jar>
+    </target>
+
+</project>
