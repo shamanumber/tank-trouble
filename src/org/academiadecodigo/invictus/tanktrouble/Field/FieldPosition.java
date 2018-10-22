@@ -16,14 +16,8 @@ public class FieldPosition {
     }
 
 
-    public SimpleGfxGrid getField() {
-        return field;
-    }
 
-    public void setPos(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
+
 
     public int getX() {
         return x;

@@ -3,6 +3,5 @@ package org.academiadecodigo.invictus.tanktrouble.Field;
 public enum Mazes {
     MAZE1,
     MAZE2,
-    MAZE3,
-    MAZE4
+    MAZE3
 }

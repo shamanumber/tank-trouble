@@ -1,6 +1,5 @@
 package org.academiadecodigo.invictus.tanktrouble;
 
-import org.academiadecodigo.invictus.tanktrouble.Field.SimpleGfxGrid;
 
 import java.lang.ref.Cleaner;
 

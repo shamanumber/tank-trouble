@@ -25,9 +25,6 @@ public class Wall extends GameObject {
 
     }
 
-    public Rectangle getRectangle() {
-        return rectangle;
-    }
 
     @Override
     public int getX() {

@@ -12,14 +12,12 @@ public class SimpleGfxGrid {
     private int y;
     private Rectangle field;
 
-//grid constructor with a certain number of columns and rows
 
     public SimpleGfxGrid(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
-// Initializes the field simple graphics rectangle and draws it
 
     public Wall[] init( int maze) {
         return maze(maze);
@@ -135,11 +133,6 @@ public class SimpleGfxGrid {
 
                 return walls3;
 
-            case MAZE4:
-
-                Wall[] walls4 = new Wall[0];
-
-                return walls4;
             }
             return null;
         }
