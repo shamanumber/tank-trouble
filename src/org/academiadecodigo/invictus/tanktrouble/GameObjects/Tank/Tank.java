@@ -1,15 +1,15 @@
 package org.academiadecodigo.invictus.tanktrouble.GameObjects.Tank;
 
+import org.academiadecodigo.invictus.tanktrouble.*;
 import org.academiadecodigo.invictus.tanktrouble.Field.FieldPosition;
 import org.academiadecodigo.invictus.tanktrouble.Field.SimpleGfxGrid;
-import org.academiadecodigo.invictus.tanktrouble.Game;
 import org.academiadecodigo.invictus.tanktrouble.GameObjects.GameObject;
 import org.academiadecodigo.invictus.tanktrouble.GameObjects.Projectile;
-import org.academiadecodigo.invictus.tanktrouble.Main;
-import org.academiadecodigo.invictus.tanktrouble.Menu;
-import org.academiadecodigo.invictus.tanktrouble.Sound;
+import org.academiadecodigo.invictus.tanktrouble.GameObjects.Wall;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
+
+import java.lang.ref.Cleaner;
 
 
 public class Tank extends GameObject {
@@ -21,6 +21,7 @@ public class Tank extends GameObject {
     private boolean left;
     private boolean right;
     private Game game;
+    private Game getField;
     private Sound fire = new Sound(" lib/Resources/Sound/disparo.wav");
 
     public Tank(FieldPosition pos, String path, int[] KEY_CODES, Game game) {
@@ -75,9 +76,22 @@ public class Tank extends GameObject {
         Picture playerWon = new Picture(500, 300, "lib/Resources/Pictures/toy wins.png");
         playerWon.draw();
 
-        Menu reStart = new Menu();
+        Thread.sleep(2500);
 
-        reStart.play();
+        tankExplosion.delete();
+        playerWon.delete();
+
+
+        Game restart = new Game();
+        restart.start();
+
+
+
+        SimpleGfxGrid field = new SimpleGfxGrid(0,0);
+
+
+       // Menu reStart = new Menu();
+        // reStart.play();
     }
 
     public void move() {

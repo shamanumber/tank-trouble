@@ -8,6 +8,9 @@ import org.academiadecodigo.invictus.tanktrouble.GameObjects.Wall;
 import org.academiadecodigo.invictus.tanktrouble.GameObjects.Tank.Player1Tank;
 import org.academiadecodigo.invictus.tanktrouble.GameObjects.Tank.Player2Tank;
 import org.academiadecodigo.invictus.tanktrouble.GameObjects.Tank.Tank;
+import org.academiadecodigo.simplegraphics.graphics.Color;
+
+import java.awt.*;
 
 public class Game {
 
@@ -23,22 +26,9 @@ public class Game {
     public Game() {
         menu = new Menu();
         status = Status.MENU;
-
-
     }
 
-
-
     public void start() throws InterruptedException {
-
-        field = new SimpleGfxGrid(1500, 1500);
-        int random=(int)Math.floor(Math.random()* (Mazes.values().length));
-        walls = field.init(random);
-        tanks[0] = new Player1Tank(new FieldPosition(50, 60, field), this);
-        tanks[1] = new Player2Tank(new FieldPosition(600, 600, field), this);
-        collisionDetect = new Collision();
-
-
 
         status = menu.play();
 
@@ -46,6 +36,14 @@ public class Game {
             System.exit(0);
         }
         if (status == Status.GAME) {
+
+            field = new SimpleGfxGrid(1500, 1500);
+            int random = (int) Math.floor(Math.random() * (Mazes.values().length-1));
+            walls = field.init(random);
+            tanks[0] = new Player1Tank(new FieldPosition(50, 60, field), this);
+            tanks[1] = new Player2Tank(new FieldPosition(600, 600, field), this);
+            collisionDetect = new Collision();
+
             while (true) {
 
                 for (int i = 0; i < tanks.length; i++) {
@@ -59,10 +57,12 @@ public class Game {
                     }
                 }
                 Thread.sleep(16);
-
             }
+
         }
     }
+
+
 
     public void addProjectile(Projectile projectile) {
 
@@ -82,6 +82,8 @@ public class Game {
         }
 
     }
+
+
     public enum Status {
         MENU,
         GAME,

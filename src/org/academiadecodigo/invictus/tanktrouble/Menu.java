@@ -46,7 +46,6 @@ public class Menu {
 
         return status;
 
-
     }
 
     private class MenuHandler implements KeyboardHandler {

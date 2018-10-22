@@ -25,7 +25,6 @@ public class SimpleGfxGrid {
         return maze(maze);
     }
 
-
     public Wall[] maze(int maze) {
         switch (Mazes.values()[maze]) {
             case MAZE1:
@@ -135,9 +134,16 @@ public class SimpleGfxGrid {
                 walls3[21] = new Wall(900, 300, 40, 5, true);
 
                 return walls3;
+
+            case MAZE4:
+
+                Wall[] walls4 = new Wall[0];
+
+                return walls4;
             }
             return null;
         }
-    }
+
+}
 
 
